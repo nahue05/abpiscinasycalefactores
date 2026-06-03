@@ -18,9 +18,9 @@ function App() {
         <main>
             <header className="header">
                 <div className="header-container">
-                    <div className="logo">
-                        <img src="/logo_simple_invisible.png" alt="Andrés Berrutti Piscinas y Calefactores" />
-                    </div>
+                    <a className="logo" href="#inicio" aria-label="Ir al inicio">
+    					<img src="/logo_simple_invisible.png" alt="Andrés Berrutti Piscinas y Calefactores" />
+					</a>
 
                     <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
                         <button className="menu-close" onClick={closeMenu} aria-label="Cerrar menú">
@@ -70,7 +70,7 @@ function App() {
                 ></div>
             </header>
 
-            <section className="hero">
+            <section className="hero" id="inicio">
                 <div className="hero-content">
                     <span className="eyebrow">Piscinas & Calefactores</span>
 
@@ -264,9 +264,14 @@ function App() {
             </section>
 
             <footer className="footer">
-                <img src="/logo.png" alt="Andrés Berrutti Piscinas y Calefactores" />
-                <p>Andrés Berrutti - Piscinas & Calefactores</p>
-            </footer>
+				<img src="/logo.png" alt="Andrés Berrutti Piscinas y Calefactores" />
+
+				<p>Andrés Berrutti - Piscinas & Calefactores</p>
+
+				<a className="footer-top-link" href="#inicio">
+					Volver arriba ↑
+				</a>
+			</footer>
         </main>
     );
 }
