@@ -272,8 +272,7 @@ main {
 }
 
 .hero-card {
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72));
     border: 1px solid rgba(32, 185, 223, 0.18);
     border-radius: 38px;
     padding: 42px;
@@ -616,6 +615,8 @@ main {
         display: inline-flex;
         width: 44px;
         height: 44px;
+        align-items: center;
+        justify-content: center;
         background:
             linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 251, 253, 0.95));
         border: 1px solid rgba(32, 185, 223, 0.18);
@@ -700,8 +701,9 @@ main {
 
     .hero {
         min-height: auto;
+        grid-template-columns: 1fr;
         padding: 54px 6% 64px;
-        gap: 42px;
+        gap: 0;
     }
 
     .hero-content {
@@ -723,7 +725,7 @@ main {
     }
 
     .hero-card {
-        margin: 0 auto;
+        display: none;
     }
 
     .product-grid,
@@ -787,7 +789,7 @@ main {
     }
 
     .hero {
-        padding: 46px 5% 58px;
+        padding: 42px 5% 48px;
     }
 
     .hero h1 {
@@ -806,11 +808,6 @@ main {
     .primary-button,
     .secondary-button {
         width: 100%;
-    }
-
-    .hero-card {
-        padding: 24px;
-        border-radius: 28px;
     }
 
     .section {
