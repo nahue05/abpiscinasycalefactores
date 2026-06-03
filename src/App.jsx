@@ -19,7 +19,7 @@ function App() {
             <header className="header">
                 <div className="header-container">
                     <div className="logo">
-                        <img src="/logo_simple.png" alt="Andrés Berrutti Piscinas y Calefactores" />
+                        <img src="/logo_simple_invisible.png" alt="Andrés Berrutti Piscinas y Calefactores" />
                     </div>
 
                     <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
