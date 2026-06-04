@@ -63,10 +63,12 @@ function HomeHeader() {
 				</button>
             </div>
 
-            <div
-                className={`menu-overlay ${menuOpen ? "menu-overlay-open" : ""}`}
-                onClick={closeMenu}
-            ></div>
+            <button
+				type="button"
+				className={`menu-overlay ${menuOpen ? "menu-overlay-open" : ""}`}
+				onClick={closeMenu}
+				aria-label="Cerrar menú"
+			/>
         </header>
     );
 }
