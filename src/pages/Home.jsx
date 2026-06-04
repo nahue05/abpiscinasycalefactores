@@ -1,73 +1,15 @@
-import { useState } from "react";
-import { FaWhatsapp, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
-
+import "../styles/home.css";
+import HomeHeader from "../components/HomeHeader.jsx";
+import Footer from "../components/Footer.jsx";
 
 function Home() {
-    const [menuOpen, setMenuOpen] = useState(false);
+    const whatsappNumber = "59892334060";
+    const whatsappMessage = "Hola, me gustaría obtener información sobre...";
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
-	const whatsappNumber = "59892334060";
-	const whatsappMessage = "Hola, me gustaría obtener información sobre...";
-	const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-	const instagramLink = "https://www.instagram.com/ab_piscinas/";
     return (
-        <main>
-            <header className="header">
-                <div className="header-container">
-                    <a className="logo" href="#inicio" aria-label="Ir al inicio">
-    					<img src="/logo_simple_invisible.png" alt="Andrés Berrutti Piscinas y Calefactores" />
-					</a>
-
-                    <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
-                        <button className="menu-close" onClick={closeMenu} aria-label="Cerrar menú">
-                            <FaTimes />
-                        </button>
-
-                        <a href="#servicios" onClick={closeMenu}>Servicios</a>
-                        <a href="#productos" onClick={closeMenu}>Productos</a>
-                        <a href="#trabajos" onClick={closeMenu}>Trabajos</a>
-                        <a href="#contacto" onClick={closeMenu}>Contacto</a>
-						<a href="catalogo" onClick={closeMenu}>Catalogo</a>
-                    </nav>
-
-                    <div className="header-socials">
-                        <a
-                            className="social-link whatsapp-link"
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="WhatsApp"
-                        >
-                            <FaWhatsapp />
-                        </a>
-
-                        <a
-                            className="social-link instagram-link"
-                            href={instagramLink}
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="Instagram"
-                        >
-                            <FaInstagram />
-                        </a>
-                    </div>
-
-                    <button
-                        className="mobile-menu-button"
-                        onClick={() => setMenuOpen(true)}
-                        aria-label="Abrir menú"
-                    >
-                        <FaBars />
-                    </button>
-                </div>
-
-                <div
-                    className={`menu-overlay ${menuOpen ? "menu-overlay-open" : ""}`}
-                    onClick={closeMenu}
-                ></div>
-            </header>
+        <main className="home-main">
+            <HomeHeader />
 
             <section className="hero" id="inicio">
                 <div className="hero-content">
@@ -79,8 +21,6 @@ function Home() {
                         Venta y asesoramiento en artículos para piscina, calefactores para piscina,
                         estufas y equipos de calefacción para hogares, comercios y espacios exteriores.
                     </p>
-
-                    
                 </div>
 
                 <div className="hero-card">
@@ -148,21 +88,21 @@ function Home() {
                 </div>
 
                 <div className="product-grid">
-					<a href="/catalogo?categoria=Piscinas" className="product-card pool">
-						<div>
-							<span>Piscinas</span>
-							<h3>Equipamiento y mantenimiento</h3>
-							<p>Bombas, filtros, productos, accesorios y repuestos.</p>
-						</div>
-					</a>
+                    <a href="/catalogo?categoria=Piscinas" className="product-card pool">
+                        <div>
+                            <span>Piscinas</span>
+                            <h3>Equipamiento y mantenimiento</h3>
+                            <p>Bombas, filtros, productos, accesorios y repuestos.</p>
+                        </div>
+                    </a>
 
-					<a href="/catalogo?categoria=Calefacción" className="product-card heater">
-						<div>
-							<span>Calefacción</span>
-							<h3>Calefactores y estufas</h3>
-							<p>Soluciones para piscinas, hogares, comercios y espacios abiertos.</p>
-						</div>
-					</a>
+                    <a href="/catalogo?categoria=Calefacción" className="product-card heater">
+                        <div>
+                            <span>Calefacción</span>
+                            <h3>Calefactores y estufas</h3>
+                            <p>Soluciones para piscinas, hogares, comercios y espacios abiertos.</p>
+                        </div>
+                    </a>
                 </div>
             </section>
 
@@ -249,18 +189,9 @@ function Home() {
                 </a>
             </section>
 
-            <footer className="footer">
-				<img src="/logo.png" alt="Logo AB Piscinas" />
-
-				<p>© 2026 Andrés Berrutti Piscinas y Calefactores</p>
-
-				<a href="/" className="footer-top-link">
-					Volver al inicio
-    			</a>
-			</footer>
+            <Footer />
         </main>
     );
 }
-
 
 export default Home;

@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
-import { supabase } from "../supabaseClient";
+import { FaWhatsapp } from "react-icons/fa";
+import "../styles/catalogo.css";
+import { supabase } from "../lib/supabaseClient";
+import CatalogHeader from "../components/CatalogHeader.jsx";
+import Footer from "../components/Footer.jsx";
 
 function Catalogo() {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [searchParams] = useSearchParams();
-	const [menuOpen, setMenuOpen] = useState(false);
-
-	const closeMenu = () => {
-		setMenuOpen(false);
-	};
     const categoria = searchParams.get("categoria");
     const whatsappNumber = "59892334060";
 
@@ -46,36 +44,7 @@ function Catalogo() {
 
     return (
         <>
-            <header className="catalog-header">
-				<a href="/" className="catalog-logo">
-					<img src="/logo_simple_invisible.png" alt="Andrés Berrutti Piscinas y Calefactores" />
-				</a>
-
-				<nav className={`catalog-nav ${menuOpen ? "catalog-nav-open" : ""}`}>
-					<button className="catalog-menu-close" onClick={closeMenu} aria-label="Cerrar menú">
-						<FaTimes />
-					</button>
-
-					<a href="/" onClick={closeMenu}>Inicio</a>
-					<a href="/catalogo" onClick={closeMenu}>Todo el catálogo</a>
-					<a href="/catalogo?categoria=Calefacción" onClick={closeMenu}>Calefacción</a>
-					<a href="/catalogo?categoria=Piscinas" onClick={closeMenu}>Piscinas</a>
-				</nav>
-
-				<button
-					className="catalog-mobile-menu-button"
-					onClick={() => setMenuOpen(true)}
-					aria-label="Abrir menú"
-				>
-					<FaBars />
-				</button>
-
-				<button
-					className={`catalog-menu-overlay ${menuOpen ? "catalog-menu-overlay-open" : ""}`}
-					onClick={closeMenu}
-					aria-label="Cerrar menú"
-				/>
-			</header>
+            <CatalogHeader />
 
             <main className="catalog-page">
                 <section className="catalog-hero">
@@ -157,19 +126,8 @@ function Catalogo() {
                     </div>
                 </section>
             </main>
-			<footer className="footer catalog-footer">
-				<img src="/logo.png" alt="Andrés Berrutti Piscinas y Calefactores" />
 
-				<p>© 2026 Andrés Berrutti Piscinas y Calefactores</p>
-
-				<div className="catalog-footer-links">
-					<a href="/" className="footer-top-link">
-						Inicio
-					</a>
-
-					
-				</div>
-			</footer>
+            <Footer catalogo />
         </>
     );
 }
