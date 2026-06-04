@@ -824,16 +824,13 @@
 		flex-direction: column;
 		align-items: stretch;
 		justify-content: flex-start;
-		gap: 6px;
-		padding: 18px;
-		border-radius: 30px;
-		background:
-			radial-gradient(circle at top right, rgba(32, 185, 223, 0.16), transparent 34%),
-			radial-gradient(circle at bottom left, rgba(230, 79, 157, 0.13), transparent 34%),
-			rgba(255, 255, 255, 0.86);
-		border: 1px solid rgba(255, 255, 255, 0.62);
+		gap: 8px;
+		padding: 16px;
+		border-radius: 28px;
+		background: rgba(255, 255, 255, 0.96);
+		border: 1px solid rgba(17, 48, 71, 0.08);
 		box-shadow: 0 22px 70px rgba(17, 48, 71, 0.18);
-		backdrop-filter: blur(16px);
+		backdrop-filter: blur(10px);
 		transform: translateX(calc(100% + 24px));
 		opacity: 0;
 		pointer-events: none;
@@ -842,7 +839,6 @@
 			opacity 0.24s ease;
 		z-index: 1002;
 	}
-
 	.nav-open {
 		transform: translateX(0);
 		opacity: 1;
@@ -851,7 +847,6 @@
 
 	.nav a {
 		width: 100%;
-		position: relative;
 		padding: 15px 18px;
 		border-radius: 18px;
 		color: var(--dark);
@@ -859,18 +854,8 @@
 		font-weight: 900;
 		letter-spacing: -0.2px;
 		border-bottom: none;
-		background: rgba(255, 255, 255, 0.42);
-		transition:
-			background 0.2s ease,
-			color 0.2s ease,
-			transform 0.2s ease;
-	}
-
-	.nav a:hover,
-	.nav a:active {
-		background: rgba(255, 255, 255, 0.72);
-		color: var(--secondary);
-		transform: translateX(-3px);
+		background: rgba(244, 251, 253, 0.96);
+		box-shadow: inset 0 0 0 1px rgba(17, 48, 71, 0.05);
 	}
 
     .menu-close {
@@ -897,11 +882,11 @@
 		display: block;
 		position: fixed;
 		inset: 0;
-		background: rgba(17, 48, 71, 0.18);
+		background: rgba(17, 48, 71, 0.08);
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity 0.24s ease;
-		backdrop-filter: blur(2px);
+		backdrop-filter: none;
 		z-index: 1001;
 	}
 
