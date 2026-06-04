@@ -874,11 +874,11 @@
     }
 
     .catalog-mobile-slide-left {
-        transform: translateX(-34px);
+        transform: translateX(-22px);
     }
 
     .catalog-mobile-slide-right {
-        transform: translateX(34px);
+        transform: translateX(22px);
     }
 
     .catalog-mobile-blur-in {
