@@ -521,11 +521,14 @@
 @media (max-width: 760px) {
 	.catalog-page {
 		width: 100%;
+		max-width: 100vw;
 		overflow-x: hidden;
 	}
 
     .catalog-header {
         height: 68px;
+		width: 100%;
+		max-width: 100vw;
         padding: 0 5%;
         overflow: visible;
         background: rgba(255, 255, 255, 0.78);
@@ -576,21 +579,23 @@
         border: 1px solid rgba(17, 48, 71, 0.08);
         box-shadow: 0 22px 70px rgba(17, 48, 71, 0.18);
         backdrop-filter: blur(10px);
-        transform: translateX(calc(100% + 24px));
-        opacity: 0;
-        pointer-events: none;
-        transition:
-            transform 0.28s ease,
-            opacity 0.24s ease;
-        z-index: 1002;
+        transform: translateY(-8px) scale(0.96);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition:
+			transform 0.28s ease,
+			opacity 0.24s ease,
+			visibility 0.24s ease;
+		z-index: 1002;
     }
 
-    .catalog-nav-open {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-    }
-
+	.catalog-nav-open {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
     .catalog-nav a {
         width: 100%;
         padding: 15px 18px;
