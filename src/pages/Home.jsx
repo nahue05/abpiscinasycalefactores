@@ -30,17 +30,36 @@ function Home() {
             }
         );
 
-        elementos.forEach((elemento, index) => {
-            elemento.classList.add("mobile-reveal");
+		elementos.forEach((elemento) => {
+			elemento.classList.add("mobile-reveal");
 
-            if (index % 2 === 0) {
-                elemento.classList.add("mobile-reveal-left");
-            } else {
-                elemento.classList.add("mobile-reveal-right");
-            }
+			if (elemento.classList.contains("hero-content")) {
+				elemento.classList.add("mobile-fade-up");
+			} else if (elemento.classList.contains("hero-card")) {
+				elemento.classList.add("mobile-zoom-soft");
+			} else if (elemento.classList.contains("section-title")) {
+				elemento.classList.add("mobile-fade-up");
+			} else if (elemento.classList.contains("service-card")) {
+				const cards = Array.from(document.querySelectorAll(".service-card"));
+				const index = cards.indexOf(elemento);
 
-            observador.observe(elemento);
-        });
+				if (index % 2 === 0) {
+					elemento.classList.add("mobile-slide-left");
+				} else {
+					elemento.classList.add("mobile-slide-right");
+				}
+			} else if (elemento.classList.contains("product-card")) {
+				elemento.classList.add("mobile-zoom-soft");
+			} else if (elemento.matches(".work-grid div")) {
+				elemento.classList.add("mobile-wave-in");
+			} else if (elemento.matches(".faq-list article")) {
+				elemento.classList.add("mobile-fade-up");
+			} else if (elemento.classList.contains("contact")) {
+				elemento.classList.add("mobile-blur-in");
+			}
+
+			observador.observe(elemento);
+		});
 
         return () => {
             observador.disconnect();

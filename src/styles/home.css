@@ -1165,38 +1165,45 @@
         background: #ffffff;
         border-radius: 50% 50% 0 0;
     }
-	    .mobile-reveal {
-        opacity: 0;
-        transition:
-            opacity 0.72s ease,
-            transform 0.72s ease;
-        will-change: opacity, transform;
-    }
+	.mobile-reveal {
+		opacity: 0;
+		transition:
+			opacity 0.76s ease,
+			transform 0.76s ease,
+			filter 0.76s ease;
+		will-change: opacity, transform, filter;
+	}
 
-    .mobile-reveal-left {
-        transform: translateX(-34px);
-    }
+	.mobile-fade-up {
+		transform: translateY(26px);
+	}
 
-    .mobile-reveal-right {
-        transform: translateX(34px);
-    }
+	.mobile-slide-left {
+		transform: translateX(-34px);
+	}
 
-    .mobile-visible {
-        opacity: 1;
-        transform: translateX(0);
-    }
+	.mobile-slide-right {
+		transform: translateX(34px);
+	}
 
-    .section-title.mobile-reveal-left,
-    .section-title.mobile-reveal-right,
-    .contact.mobile-reveal-left,
-    .contact.mobile-reveal-right {
-        transform: translateY(24px);
-    }
+	.mobile-zoom-soft {
+		transform: scale(0.94);
+	}
 
-    .section-title.mobile-visible,
-    .contact.mobile-visible {
-        transform: translateY(0);
-    }
+	.mobile-wave-in {
+		transform: translateY(28px) rotate(-1.6deg);
+	}
+
+	.mobile-blur-in {
+		filter: blur(8px);
+		transform: translateY(24px);
+	}
+
+	.mobile-visible {
+		opacity: 1;
+		filter: blur(0);
+		transform: translateX(0) translateY(0) scale(1) rotate(0);
+	}
     
 }
 
