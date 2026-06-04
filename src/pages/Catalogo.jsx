@@ -259,7 +259,8 @@ function Catalogo() {
 																					: `Ver descripción de ${producto.marca} ${producto.modelo}`
 																			}
 																		>
-																			{descripcionAbierta === producto.id ? "×" : "Más info"}
+																			<span className="catalog-info-text">Más info</span>
+																			<span className="catalog-info-x">×</span>
 																		</button>
 
 																				<div className={`catalog-description-hover ${descripcionAbierta === producto.id ? "catalog-description-open" : ""}`}>

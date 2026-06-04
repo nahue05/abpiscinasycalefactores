@@ -738,3 +738,95 @@
         padding: 54px 22px 22px;
     }
 }
+
+
+@media (hover: none), (pointer: coarse) {
+    .catalog-mobile-info-button {
+        top: 12px;
+        right: 12px;
+        z-index: 5;
+        width: 82px;
+        height: 34px;
+        padding: 0;
+        overflow: hidden;
+        position: absolute;
+        border: none;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--dark);
+        box-shadow: 0 10px 24px rgba(17, 48, 71, 0.12);
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            color 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .catalog-mobile-info-button::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 999px;
+        background: rgba(230, 79, 157, 0.12);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.28s ease;
+    }
+
+    .catalog-mobile-info-button-open::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .catalog-mobile-info-button-open {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--secondary);
+        transform: scale(0.96);
+        box-shadow: 0 12px 28px rgba(230, 79, 157, 0.16);
+    }
+
+    .catalog-info-text,
+    .catalog-info-x {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+            opacity 0.22s ease,
+            transform 0.28s ease;
+    }
+
+    .catalog-info-text {
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    .catalog-info-x {
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 1;
+        opacity: 0;
+        transform: translateX(22px) rotate(90deg) scale(0.6);
+    }
+
+    .catalog-mobile-info-button-open .catalog-info-text {
+        opacity: 0;
+        transform: translateX(-22px) scale(0.75);
+    }
+
+    .catalog-mobile-info-button-open .catalog-info-x {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+
+    .catalog-description-hover {
+        padding: 54px 22px 22px;
+    }
+}
