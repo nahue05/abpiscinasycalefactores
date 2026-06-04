@@ -238,7 +238,7 @@ function Catalogo() {
 
                                                             return (
                                                                 <article className="catalog-card" key={producto.id}>
-                                                                    <div className="catalog-image">
+                                                        			<div className={`catalog-image ${producto.categoria === "Calefactores" ? "catalog-image-heaters" : "catalog-image-pools"}`}>
                                                                         {producto.imagen_url && producto.imagen_url.trim() !== "" ? (
                                                                             <img src={producto.imagen_url} alt={`${producto.marca} ${producto.modelo}`} />
                                                                         ) : (
@@ -249,14 +249,18 @@ function Catalogo() {
 
 																		{producto.descripcion_breve && (
 																			<>
-																				<button
-																					type="button"
-																					className="catalog-mobile-info-button"
-																					onClick={() => toggleDescripcion(producto.id)}
-																					aria-label={`Ver descripción de ${producto.marca} ${producto.modelo}`}
-																				>
-																					Más info
-																				</button>
+																		<button
+																			type="button"
+																			className={`catalog-mobile-info-button ${descripcionAbierta === producto.id ? "catalog-mobile-info-button-open" : ""}`}
+																			onClick={() => toggleDescripcion(producto.id)}
+																			aria-label={
+																				descripcionAbierta === producto.id
+																					? `Cerrar descripción de ${producto.marca} ${producto.modelo}`
+																					: `Ver descripción de ${producto.marca} ${producto.modelo}`
+																			}
+																		>
+																			{descripcionAbierta === producto.id ? "×" : "Más info"}
+																		</button>
 
 																				<div className={`catalog-description-hover ${descripcionAbierta === producto.id ? "catalog-description-open" : ""}`}>
 																					<p>{producto.descripcion_breve}</p>
