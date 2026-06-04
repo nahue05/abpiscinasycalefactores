@@ -13,13 +13,13 @@ function Home() {
 
             <section className="hero" id="inicio">
                 <div className="hero-content">
-                    <span className="eyebrow">Piscinas & Calefactores</span>
+                    <span className="eyebrow gradient-label">Piscinas & Calefactores</span>
 
                     <h1>Piscinas, calefacción y soluciones para tu hogar</h1>
 
                     <p>
-                        Venta y asesoramiento en artículos para piscina, calefactores para piscina,
-                        estufas y equipos de calefacción para hogares, comercios y espacios exteriores.
+                        Venta, instalación y asesoramiento en piscinas, artículos para piscina,
+                        calefactores, estufas y soluciones de calefacción para hogares y espacios exteriores.
                     </p>
                 </div>
 
@@ -28,62 +28,86 @@ function Home() {
                 </div>
             </section>
 
-            <section className="section" id="servicios">
+			<section className="section services-section" id="servicios">
                 <div className="section-title">
-                    <span>Servicios</span>
-                    <h2>Todo para piscinas y calefacción de espacios</h2>
+                    <span className="gradient-label">Servicios</span>
+                    <h2>Instalación, mantenimiento y asesoramiento</h2>
                     <p>
-                        Soluciones para quienes buscan equipar, mantener o mejorar su piscina,
-                        y también calefaccionar distintos espacios.
+                        Trabajamos tanto en piscinas como en calefacción para el hogar,
+                        cuidando la instalación, el funcionamiento y el entorno donde se coloca cada equipo.
                     </p>
                 </div>
 
-                <div className="cards">
-                    <article className="card">
-                        <div className="card-icon">💧</div>
-                        <h3>Artículos para piscina</h3>
-                        <p>
-                            Accesorios, repuestos, productos, bombas, filtros y soluciones para
-                            el cuidado del agua.
-                        </p>
+                <div className="cards service-cards">
+                    <article className="card service-card">
+                        <div className="service-card-media service-card-pools-maintenance">
+                            <h3>
+                                <span>Mantenimiento de piscinas</span>
+                            </h3>
+                        </div>
+
+                        <div className="service-card-body">
+                            <p>
+                                Servicio periódico para piscinas ya instaladas, con limpieza y mantenimiento
+                                del agua para que se mantenga en condiciones durante la temporada.
+                            </p>
+                        </div>
                     </article>
 
-                    <article className="card">
-                        <div className="card-icon">🔥</div>
-                        <h3>Calefactores para piscina</h3>
-                        <p>
-                            Equipos para climatizar el agua y disfrutar la piscina durante más
-                            meses del año.
-                        </p>
+                    <article className="card service-card">
+                        <div className="service-card-media service-card-pools-installation">
+                            <h3>
+                                <span>Instalación de piscinas</span>
+                            </h3>
+                        </div>
+
+                        <div className="service-card-body">
+                            <p>
+                                Instalamos piscinas y cuidamos que el resultado final quede integrado al espacio,
+                                logrando un entorno agradable como se puede ver en nuestros trabajos.
+                            </p>
+                        </div>
                     </article>
 
-                    <article className="card">
-                        <div className="card-icon">🏠</div>
-                        <h3>Estufas y calefactores</h3>
-                        <p>
-                            Opciones de calefacción para hogares, comercios y espacios interiores
-                            o exteriores.
-                        </p>
+                    <article className="card service-card">
+                        <div className="service-card-media service-card-heaters-installation">
+                            <h3>
+                                <span>Instalación de estufas y calefactores</span>
+                            </h3>
+                        </div>
+
+                        <div className="service-card-body">
+                            <p>
+                                Instalamos calefactores y estufas para el hogar, buscando una solución funcional,
+                                segura y estética, cuidando también el entorno donde queda instalada.
+                            </p>
+                        </div>
                     </article>
 
-                    <article className="card">
-                        <div className="card-icon">🤝</div>
-                        <h3>Asesoramiento</h3>
-                        <p>
-                            Orientación para elegir el producto adecuado según el espacio, la
-                            necesidad y el presupuesto.
-                        </p>
+                    <article className="card service-card">
+                        <div className="service-card-media service-card-advice">
+                            <h3>
+                                <span>Asesoramiento personalizado</span>
+                            </h3>
+                        </div>
+
+                        <div className="service-card-body">
+                            <p>
+                                Te orientamos para elegir la piscina, el equipo, la estufa o el calefactor adecuado
+                                según el espacio, el uso y el presupuesto disponible.
+                            </p>
+                        </div>
                     </article>
                 </div>
             </section>
 
-            <section className="section products" id="productos">
+            <section className="section products products-section" id="productos">
                 <div className="section-title">
-                    <span>Productos</span>
+                    <span className="gradient-label">Productos</span>
                     <h2>Líneas principales</h2>
                     <p>
-                        La landing puede crecer después con fotos reales, marcas disponibles
-                        y productos destacados.
+                        Encontrá productos para piscinas, mantenimiento, calefacción del agua
+                        y calefactores para el hogar.
                     </p>
                 </div>
 
@@ -92,91 +116,91 @@ function Home() {
                         <div>
                             <span>Piscinas</span>
                             <h3>Equipamiento y mantenimiento</h3>
-                            <p>Bombas, filtros, productos, accesorios y repuestos.</p>
+                            <p>Bombas, filtros, productos, accesorios, repuestos y soluciones para el agua.</p>
                         </div>
                     </a>
 
                     <a href="/catalogo?categoria=Calefactores" className="product-card heater">
                         <div>
-                            <span>Calefacción</span>
-                            <h3>Calefactores y estufas</h3>
-                            <p>Soluciones para piscinas, hogares, comercios y espacios abiertos.</p>
+                            <span>Calefactores</span>
+                            <h3>Estufas y calefacción</h3>
+                            <p>Equipos a leña, pellets, insertables y soluciones para calefaccionar el hogar.</p>
                         </div>
                     </a>
                 </div>
             </section>
 
-            <section className="section works" id="trabajos">
+            <section className="section works works-section" id="trabajos">
                 <div className="section-title">
-                    <span>Trabajos</span>
-                    <h2>Proyectos realizados</h2>
+                    <span className="gradient-label">Trabajos</span>
+                    <h2>Instalaciones realizadas</h2>
                     <p>
-                        Acá después agregamos fotos reales de instalaciones, productos,
-                        piscinas, estufas o calefactores.
+                        En esta sección vamos a mostrar instalaciones de piscinas, calefactores,
+                        estufas y terminaciones donde se vea el entorno final de cada trabajo.
                     </p>
                 </div>
 
                 <div className="work-grid">
                     <div>
-                        <span>Foto 1</span>
+                        <span>Piscinas</span>
                     </div>
 
                     <div>
-                        <span>Foto 2</span>
+                        <span>Calefactores</span>
                     </div>
 
                     <div>
-                        <span>Foto 3</span>
+                        <span>Terminaciones</span>
                     </div>
                 </div>
             </section>
 
-            <section className="section faq">
+            <section className="section faq faq-section">
                 <div className="section-title">
-                    <span>Preguntas frecuentes</span>
+                    <span className="gradient-label">Preguntas frecuentes</span>
                 </div>
 
                 <div className="faq-list">
                     <article>
-                        <h3>¿Venden artículos para piscina?</h3>
+                        <h3>¿Realizan mantenimiento de piscinas?</h3>
                         <p>
-                            Sí, contamos con productos, accesorios, repuestos y equipamiento
-                            para el cuidado y funcionamiento de piscinas.
+                            Sí, ofrecemos mantenimiento para piscinas ya instaladas, incluyendo limpieza
+                            y cuidado general para mantener el agua en buenas condiciones.
                         </p>
                     </article>
 
                     <article>
-                        <h3>¿Tienen calefactores para piscina?</h3>
+                        <h3>¿Instalan piscinas?</h3>
                         <p>
-                            Sí, asesoramos sobre opciones para climatizar el agua según el tipo
-                            de piscina y el uso que se le quiera dar.
+                            Sí, realizamos instalaciones de piscinas y cuidamos que el resultado quede
+                            bien integrado al espacio exterior.
                         </p>
                     </article>
 
                     <article>
-                        <h3>¿También venden estufas?</h3>
+                        <h3>¿Instalan estufas y calefactores?</h3>
                         <p>
-                            Sí, trabajamos con estufas y equipos de calefacción para distintos
-                            espacios.
+                            Sí, trabajamos con instalación de estufas y calefactores para hogares,
+                            buscando una solución práctica, segura y estética.
                         </p>
                     </article>
 
                     <article>
-                        <h3>¿Puedo consultar por WhatsApp?</h3>
+                        <h3>¿Puedo pedir asesoramiento antes de comprar?</h3>
                         <p>
-                            Sí, podés escribir por WhatsApp indicando qué necesitás y te
-                            orientamos con la mejor opción disponible.
+                            Sí, podés consultar por WhatsApp y te orientamos según el espacio,
+                            el tipo de uso y el equipo que mejor se adapte a lo que necesitás.
                         </p>
                     </article>
                 </div>
             </section>
 
             <section className="contact" id="contacto">
-                <span>Contacto</span>
-                <h2>¿Buscás artículos para piscina o calefacción?</h2>
+                <span className="gradient-label">Contacto</span>
+                <h2>¿Buscás una solución para piscina o calefacción?</h2>
                 <p>
-                    Escribinos por WhatsApp y contanos qué necesitás. Te asesoramos para
-                    encontrar la mejor opción.
+                    Escribinos por WhatsApp y contanos qué necesitás. Te asesoramos para elegir
+                    la mejor opción e instalamos cuidando el funcionamiento y el resultado final.
                 </p>
 
                 <a
