@@ -18,10 +18,21 @@ function CatalogHeader() {
                 <button className="catalog-menu-close" onClick={closeMenu} aria-label="Cerrar menú">
                     <FaTimes />
                 </button>
-                <a href="/" onClick={closeMenu}>Inicio</a>
-                <a href="/catalogo" onClick={closeMenu}>Todos los productos</a>
-				<a href="/catalogo?categoria=Piscinas" onClick={closeMenu}>Piscinas</a>
-				<a href="/catalogo?categoria=Calefactores" onClick={closeMenu}>Calefactores</a>
+				<a href="/" className="catalog-nav-link catalog-nav-link-home" onClick={closeMenu}>
+					Inicio
+				</a>
+
+				<a href="/catalogo" className="catalog-nav-link catalog-nav-link-all" onClick={closeMenu}>
+					Todos los productos
+				</a>
+
+				<a href="/catalogo?categoria=Piscinas" className="catalog-nav-link catalog-nav-link-pools" onClick={closeMenu}>
+					Piscinas
+				</a>
+
+				<a href="/catalogo?categoria=Calefactores" className="catalog-nav-link catalog-nav-link-heaters" onClick={closeMenu}>
+					Calefactores
+				</a>
             </nav>
 
             <button

@@ -44,6 +44,25 @@
     color: var(--primary-dark);
 }
 
+.catalog-nav a.catalog-nav-link-all:hover {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.catalog-nav a.catalog-nav-link-pools:hover {
+    color: var(--primary);
+}
+
+.catalog-nav a.catalog-nav-link-heaters:hover {
+    color: var(--secondary);
+}
+
+.catalog-nav a.catalog-nav-link-home:hover {
+    color: var(--dark);
+}
+
 .catalog-mobile-menu-button,
 .catalog-menu-close {
     display: none;
@@ -81,86 +100,105 @@
 }
 
 .catalog-hero {
-    padding: 86px 7% 20px;
+    padding: 52px 7% 18px;
     text-align: center;
 }
 
-.catalog-hero span {
-    display: inline-block;
-    color: var(--secondary);
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+.catalog-title {
+    color: var(--dark);
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1;
+    letter-spacing: -1.8px;
+    margin-bottom: 14px;
 }
 
-.catalog-hero h1 {
-    color: var(--dark);
-    font-size: clamp(38px, 5vw, 64px);
-    line-height: 1;
-    letter-spacing: -2px;
-    margin-bottom: 18px;
+.catalog-title-gradient {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.catalog-title-heaters {
+    color: var(--secondary);
+}
+
+.catalog-title-pools {
+    color: var(--primary);
 }
 
 .catalog-hero p {
-    max-width: 720px;
+    max-width: 640px;
     margin: 0 auto;
     color: var(--muted);
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: 17px;
+    line-height: 1.55;
 }
 
 .catalog-quick-links {
     max-width: 980px;
-    margin: 34px auto 0;
+    margin: 20px auto 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
-.catalog-quick-links a {
+.catalog-quick-link-item {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+}
+
+.catalog-quick-links a {
     color: var(--dark);
-    background: rgba(255, 255, 255, 0.74);
-    padding: 12px 20px;
-    border-radius: 999px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 900;
-    border: 1px solid rgba(32, 185, 223, 0.2);
-    box-shadow: 0 10px 24px rgba(17, 48, 71, 0.06);
+    letter-spacing: 0.2px;
     transition: 0.2s ease;
 }
 
 .catalog-quick-links a:hover {
-    color: var(--white);
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(32, 185, 223, 0.24);
+    transform: translateY(-1px);
+}
+
+.catalog-quick-link-pools:hover {
+    color: var(--primary);
+}
+
+.catalog-quick-link-heaters:hover {
+    color: var(--secondary);
+}
+
+.catalog-quick-separator {
+    color: rgba(17, 48, 71, 0.28);
+    font-weight: 900;
 }
 
 .catalog-section {
-    padding: 18px 7% 96px;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 12px 7% 72px;
 }
 
 .catalog-groups {
     display: grid;
-    gap: 76px;
+    gap: 48px;
 }
 
 .catalog-category-block {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 100px;
     display: grid;
-    gap: 54px;
+    gap: 34px;
 }
 
 .catalog-brand-block {
     display: grid;
-    gap: 24px;
+    gap: 18px;
 }
 
 .catalog-brand-title {
@@ -168,27 +206,39 @@
     padding-left: 0;
 }
 
-.catalog-brand-title span {
+.catalog-brand-title span,
+.catalog-brand-category {
     display: inline-block;
-    color: var(--secondary);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 900;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+}
+
+.catalog-brand-title span {
+    color: var(--secondary);
+}
+
+.catalog-brand-category-heaters {
+    color: var(--secondary);
+}
+
+.catalog-brand-category-pools {
+    color: var(--primary);
 }
 
 .catalog-brand-title h3 {
     color: var(--dark);
-    font-size: clamp(32px, 4vw, 48px);
+    font-size: clamp(28px, 3.2vw, 42px);
     line-height: 1.05;
-    letter-spacing: -1.2px;
+    letter-spacing: -1px;
 }
 
 .catalog-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    gap: 18px;
 }
 
 .catalog-card {
@@ -252,7 +302,7 @@
     background: rgba(134, 150, 162, 0.72);
     color: var(--white);
     display: flex;
-    align-items: top;
+    align-items: flex-start;
     justify-content: flex-start;
     padding: 24px;
     opacity: 0;
@@ -366,13 +416,13 @@
 }
 
 @media (max-width: 1200px) {
-    .catalog-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     .catalog-nav {
         gap: 18px;
         font-size: 15px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -464,42 +514,54 @@
     }
 
     .catalog-hero {
-        padding: 86px 7% 46px;
+        padding: 38px 5% 12px;
     }
 
-    .catalog-hero h1 {
-        font-size: 44px;
+    .catalog-title {
+        font-size: 38px;
+        letter-spacing: -1.4px;
+        margin-bottom: 12px;
     }
 
     .catalog-hero p {
-        font-size: 17px;
+        font-size: 16px;
+        line-height: 1.5;
     }
 
     .catalog-quick-links {
-        margin-top: 28px;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 8px;
-    }
+    margin-top: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow: visible;
+    padding-bottom: 0;
+}
 
-    .catalog-quick-links a {
-        white-space: nowrap;
-        font-size: 14px;
-        padding: 11px 16px;
-    }
+.catalog-quick-link-item {
+    gap: 8px;
+}
+
+.catalog-quick-links a {
+    white-space: nowrap;
+    font-size: 15px;
+    padding: 0;
+}
 
     .catalog-section {
-        padding: 16px 5% 72px;
+        padding: 12px 5% 60px;
     }
 
     .catalog-groups {
-        gap: 58px;
+        gap: 42px;
     }
 
     .catalog-category-block {
-        scroll-margin-top: 88px;
-        gap: 42px;
+        scroll-margin-top: 82px;
+        gap: 32px;
+    }
+
+    .catalog-brand-block {
+        gap: 18px;
     }
 
     .catalog-brand-title {
@@ -507,12 +569,13 @@
         padding-left: 0;
     }
 
-    .catalog-brand-title span {
+    .catalog-brand-title span,
+    .catalog-brand-category {
         font-size: 12px;
     }
 
     .catalog-brand-title h3 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .catalog-grid {
@@ -558,189 +621,4 @@
         justify-content: center;
         flex-wrap: wrap;
     }
-}
-
-.catalog-hero {
-    padding: 52px 7% 18px;
-    text-align: center;
-}
-
-.catalog-title {
-    color: var(--dark);
-    font-size: clamp(34px, 4vw, 54px);
-    line-height: 1;
-    letter-spacing: -1.8px;
-    margin-bottom: 14px;
-}
-
-.catalog-title-gradient {
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(135deg, var(--secondary), var(--primary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.catalog-title-heaters {
-    color: var(--secondary);
-}
-
-.catalog-title-pools {
-    color: var(--primary);
-}
-
-.catalog-hero p {
-    max-width: 640px;
-    font-size: 17px;
-    line-height: 1.55;
-}
-
-.catalog-quick-links {
-    margin: 22px auto 0;
-}
-
-.catalog-section {
-    padding: 12px 7% 72px;
-}
-
-.catalog-groups {
-    gap: 48px;
-}
-
-.catalog-category-block {
-    gap: 34px;
-    scroll-margin-top: 100px;
-}
-
-.catalog-brand-block {
-    gap: 18px;
-}
-
-.catalog-brand-title span,
-.catalog-brand-category {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-.catalog-brand-category-heaters {
-    color: var(--secondary);
-}
-
-.catalog-brand-category-pools {
-    color: var(--primary);
-}
-
-.catalog-brand-title h3 {
-    font-size: clamp(28px, 3.2vw, 42px);
-    letter-spacing: -1px;
-}
-
-.catalog-grid {
-    gap: 18px;
-}
-
-@media (max-width: 760px) {
-    .catalog-hero {
-        padding: 38px 5% 12px;
-    }
-
-    .catalog-title {
-        font-size: 38px;
-        letter-spacing: -1.4px;
-        margin-bottom: 12px;
-    }
-
-    .catalog-hero p {
-        font-size: 16px;
-        line-height: 1.5;
-    }
-
-    .catalog-quick-links {
-        margin-top: 20px;
-    }
-
-    .catalog-section {
-        padding: 12px 5% 60px;
-    }
-
-    .catalog-groups {
-        gap: 42px;
-    }
-
-    .catalog-category-block {
-        gap: 32px;
-        scroll-margin-top: 82px;
-    }
-
-    .catalog-brand-block {
-        gap: 18px;
-    }
-
-    .catalog-brand-title h3 {
-        font-size: 32px;
-    }
-}
-
-.catalog-title {
-    color: var(--dark);
-    font-size: clamp(34px, 4vw, 54px);
-    line-height: 1;
-    letter-spacing: -1.8px;
-    margin-bottom: 14px;
-}
-
-.catalog-title-gradient {
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(135deg, var(--secondary), var(--primary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.catalog-title-heaters {
-    color: var(--secondary);
-}
-
-.catalog-title-pools {
-    color: var(--primary);
-}
-
-.catalog-brand-category {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-.catalog-brand-category-heaters {
-    color: var(--secondary);
-}
-
-.catalog-brand-category-pools {
-    color: var(--primary);
-}
-
-.catalog-hero h1.catalog-title-gradient {
-    background: linear-gradient(135deg, var(--secondary), var(--primary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.catalog-hero h1.catalog-title-heaters {
-    color: var(--secondary);
-}
-
-.catalog-hero h1.catalog-title-pools {
-    color: var(--primary);
 }

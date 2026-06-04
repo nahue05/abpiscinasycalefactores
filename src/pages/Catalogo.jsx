@@ -38,9 +38,6 @@ function ordenarCategorias(categorias) {
     });
 }
 
-
-
-
 function claseTituloPrincipal(categoria) {
     if (!categoria) {
         return "catalog-title catalog-title-gradient";
@@ -68,6 +65,15 @@ function claseCategoria(categoria) {
 
     return "catalog-brand-category";
 }
+
+function obtenerGrupoProducto(producto) {
+    if (producto.categoria === "Piscinas") {
+        return producto.subcategoria || producto.marca || "Otros";
+    }
+
+    return producto.marca || producto.subcategoria || "Otros";
+}
+
 function Catalogo() {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
@@ -110,17 +116,17 @@ function Catalogo() {
 
         productos.forEach((producto) => {
             const categoriaProducto = producto.categoria || "Otros";
-            const marcaProducto = producto.marca || "Sin marca";
+            const grupoProducto = obtenerGrupoProducto(producto);
 
             if (!grupos[categoriaProducto]) {
                 grupos[categoriaProducto] = {};
             }
 
-            if (!grupos[categoriaProducto][marcaProducto]) {
-                grupos[categoriaProducto][marcaProducto] = [];
+            if (!grupos[categoriaProducto][grupoProducto]) {
+                grupos[categoriaProducto][grupoProducto] = [];
             }
 
-            grupos[categoriaProducto][marcaProducto].push(producto);
+            grupos[categoriaProducto][grupoProducto].push(producto);
         });
 
         return grupos;
@@ -129,6 +135,24 @@ function Catalogo() {
     const categoriasOrdenadas = useMemo(() => {
         return ordenarCategorias(Object.keys(gruposCatalogo));
     }, [gruposCatalogo]);
+
+    const enlacesCatalogo = useMemo(() => {
+        const enlaces = [];
+
+        categoriasOrdenadas.forEach((categoriaProducto) => {
+            const grupos = gruposCatalogo[categoriaProducto];
+
+            Object.keys(grupos).forEach((grupoProducto) => {
+                enlaces.push({
+                    texto: grupoProducto,
+                    id: crearId(`${categoriaProducto}-${grupoProducto}`),
+                    categoria: categoriaProducto
+                });
+            });
+        });
+
+        return enlaces;
+    }, [categoriasOrdenadas, gruposCatalogo]);
 
     return (
         <>
@@ -140,16 +164,31 @@ function Catalogo() {
                         {categoria ? categoria : "Todos los productos"}
                     </h1>
 
-                   
+                    <p>
+                        Elegí una sección para ir directo a los productos que estás buscando.
+                    </p>
 
-                    {!cargando && categoriasOrdenadas.length > 0 && (
-                        <div className="catalog-quick-links">
-                            {categoriasOrdenadas.map((categoriaProducto) => (
-                                <a href={`#${crearId(categoriaProducto)}`} key={categoriaProducto}>
-                                    {categoriaProducto}
-                                </a>
+                    {!cargando && enlacesCatalogo.length > 0 && (
+                        <nav className="catalog-quick-links" aria-label="Secciones del catálogo">
+                            {enlacesCatalogo.map((enlace, index) => (
+                                <span className="catalog-quick-link-item" key={enlace.id}>
+                                    <a
+                                        href={`#${enlace.id}`}
+                                        className={
+                                            enlace.categoria === "Piscinas"
+                                                ? "catalog-quick-link-pools"
+                                                : "catalog-quick-link-heaters"
+                                        }
+                                    >
+                                        {enlace.texto}
+                                    </a>
+
+                                    {index < enlacesCatalogo.length - 1 && (
+                                        <span className="catalog-quick-separator">|</span>
+                                    )}
+                                </span>
                             ))}
-                        </div>
+                        </nav>
                     )}
                 </section>
 
@@ -165,88 +204,95 @@ function Catalogo() {
                     {!cargando && productos.length > 0 && (
                         <div className="catalog-groups">
                             {categoriasOrdenadas.map((categoriaProducto) => {
-                                const marcas = gruposCatalogo[categoriaProducto];
+                                const grupos = gruposCatalogo[categoriaProducto];
 
                                 return (
                                     <section
                                         className="catalog-category-block"
-                                        id={crearId(categoriaProducto)}
                                         key={categoriaProducto}
                                     >
-                                        {Object.entries(marcas).map(([marcaProducto, productosMarca]) => (
-                                            <div className="catalog-brand-block" key={`${categoriaProducto}-${marcaProducto}`}>
-                                                <div className="catalog-brand-title">
-                                                    <span className={claseCategoria(categoriaProducto)}>
-                                                        {categoriaProducto}
-                                                    </span>
+                                        {Object.entries(grupos).map(([grupoProducto, productosGrupo]) => {
+                                            const idGrupo = crearId(`${categoriaProducto}-${grupoProducto}`);
 
-                                                    <h3>{marcaProducto}</h3>
-                                                </div>
+                                            return (
+                                                <div
+                                                    className="catalog-brand-block"
+                                                    id={idGrupo}
+                                                    key={`${categoriaProducto}-${grupoProducto}`}
+                                                >
+                                                    <div className="catalog-brand-title">
+                                                        <span className={claseCategoria(categoriaProducto)}>
+                                                            {categoriaProducto}
+                                                        </span>
 
-                                                <div className="catalog-grid">
-                                                    {productosMarca.map((producto) => {
-                                                        const mensaje = `Hola, vi esta ${producto.marca} ${producto.modelo} en su catálogo y quería más información.`;
-                                                        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+                                                        <h3>{grupoProducto}</h3>
+                                                    </div>
 
-                                                        return (
-                                                            <article className="catalog-card" key={producto.id}>
-                                                                <div className="catalog-image">
-                                                                    {producto.imagen_url && producto.imagen_url.trim() !== "" ? (
-                                                                        <img src={producto.imagen_url} alt={`${producto.marca} ${producto.modelo}`} />
-                                                                    ) : (
-                                                                        <div className="catalog-no-image">
-                                                                            <img src="/logo.png" alt="Logo Andrés Berrutti" />
-                                                                        </div>
-                                                                    )}
+                                                    <div className="catalog-grid">
+                                                        {productosGrupo.map((producto) => {
+                                                            const mensaje = `Hola, vi esta ${producto.marca} ${producto.modelo} en su catálogo y quería más información.`;
+                                                            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
 
-                                                                    {producto.descripcion_breve && (
-                                                                        <div className="catalog-description-hover">
-                                                                            <p>{producto.descripcion_breve}</p>
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-
-                                                                <div className="catalog-content">
-                                                                    <span className="catalog-category">{producto.categoria}</span>
-
-                                                                    <h3>{producto.marca} {producto.modelo}</h3>
-
-                                                                    <div className="catalog-info">
-                                                                        {producto.metros_cuadrados && (
-                                                                            <p>
-                                                                                <strong>Calefacciona:</strong> {producto.metros_cuadrados}
-                                                                            </p>
+                                                            return (
+                                                                <article className="catalog-card" key={producto.id}>
+                                                                    <div className="catalog-image">
+                                                                        {producto.imagen_url && producto.imagen_url.trim() !== "" ? (
+                                                                            <img src={producto.imagen_url} alt={`${producto.marca} ${producto.modelo}`} />
+                                                                        ) : (
+                                                                            <div className="catalog-no-image">
+                                                                                <img src="/logo.png" alt="Logo Andrés Berrutti" />
+                                                                            </div>
                                                                         )}
 
-                                                                        {producto.dimensiones && (
-                                                                            <p>
-                                                                                <strong>Dimensiones:</strong> {producto.dimensiones}
-                                                                            </p>
+                                                                        {producto.descripcion_breve && (
+                                                                            <div className="catalog-description-hover">
+                                                                                <p>{producto.descripcion_breve}</p>
+                                                                            </div>
                                                                         )}
                                                                     </div>
 
-                                                                    {producto.mostrar_precio && producto.precio && (
-                                                                        <p className="catalog-price">
-                                                                            ${producto.precio}
-                                                                        </p>
-                                                                    )}
+                                                                    <div className="catalog-content">
+                                                                        <span className="catalog-category">{producto.categoria}</span>
 
-                                                                    <a
-                                                                        className="catalog-whatsapp"
-                                                                        href={whatsappLink}
-                                                                        target="_blank"
-                                                                        rel="noreferrer"
-                                                                    >
-                                                                        <FaWhatsapp />
-                                                                        Consultar
-                                                                    </a>
-                                                                </div>
-                                                            </article>
-                                                        );
-                                                    })}
+                                                                        <h3>{producto.marca} {producto.modelo}</h3>
+
+                                                                        <div className="catalog-info">
+                                                                            {producto.metros_cuadrados && (
+                                                                                <p>
+                                                                                    <strong>Calefacciona:</strong> {producto.metros_cuadrados}
+                                                                                </p>
+                                                                            )}
+
+                                                                            {producto.dimensiones && (
+                                                                                <p>
+                                                                                    <strong>Dimensiones:</strong> {producto.dimensiones}
+                                                                                </p>
+                                                                            )}
+                                                                        </div>
+
+                                                                        {producto.mostrar_precio && producto.precio && (
+                                                                            <p className="catalog-price">
+                                                                                ${producto.precio}
+                                                                            </p>
+                                                                        )}
+
+                                                                        <a
+                                                                            className="catalog-whatsapp"
+                                                                            href={whatsappLink}
+                                                                            target="_blank"
+                                                                            rel="noreferrer"
+                                                                        >
+                                                                            <FaWhatsapp />
+                                                                            Consultar
+                                                                        </a>
+                                                                    </div>
+                                                                </article>
+                                                            );
+                                                        })}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </section>
                                 );
                             })}
