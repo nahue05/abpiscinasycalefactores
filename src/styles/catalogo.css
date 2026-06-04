@@ -8,8 +8,9 @@
 .catalog-header {
     width: 100%;
     height: 82px;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(18px);
@@ -527,6 +528,9 @@
 }
 
 @media (max-width: 760px) {
+	.catalog-shell {
+		padding-top: 68px;
+	}
 	.catalog-page {
 		width: 100%;
 		max-width: 100vw;
@@ -542,6 +546,9 @@
 		width: 100%;
 		max-width: 100vw;
 		height: 68px;
+		position: fixed;
+		top: 0;
+		left: 0;
 		padding: 0 5%;
 		overflow: visible;
 		background: rgba(255, 255, 255, 0.78);
