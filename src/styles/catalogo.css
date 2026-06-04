@@ -663,3 +663,10 @@
         transform: translateX(0);
     }
 }
+
+@media (hover: none), (pointer: coarse) {
+    .catalog-card .catalog-description-hover.catalog-description-open {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
