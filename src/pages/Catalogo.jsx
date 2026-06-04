@@ -38,6 +38,36 @@ function ordenarCategorias(categorias) {
     });
 }
 
+
+
+
+function claseTituloPrincipal(categoria) {
+    if (!categoria) {
+        return "catalog-title catalog-title-gradient";
+    }
+
+    if (categoria === "Calefactores") {
+        return "catalog-title catalog-title-heaters";
+    }
+
+    if (categoria === "Piscinas") {
+        return "catalog-title catalog-title-pools";
+    }
+
+    return "catalog-title";
+}
+
+function claseCategoria(categoria) {
+    if (categoria === "Calefactores") {
+        return "catalog-brand-category catalog-brand-category-heaters";
+    }
+
+    if (categoria === "Piscinas") {
+        return "catalog-brand-category catalog-brand-category-pools";
+    }
+
+    return "catalog-brand-category";
+}
 function Catalogo() {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
@@ -106,11 +136,11 @@ function Catalogo() {
 
             <main className="catalog-page">
                 <section className="catalog-hero">
-                    <span>Catálogo</span>
+                    <h1 className={claseTituloPrincipal(categoria)}>
+                        {categoria ? categoria : "Todos los productos"}
+                    </h1>
 
-                    <h1>{categoria ? categoria : "Todos los productos"}</h1>
-
-
+                   
 
                     {!cargando && categoriasOrdenadas.length > 0 && (
                         <div className="catalog-quick-links">
@@ -146,7 +176,10 @@ function Catalogo() {
                                         {Object.entries(marcas).map(([marcaProducto, productosMarca]) => (
                                             <div className="catalog-brand-block" key={`${categoriaProducto}-${marcaProducto}`}>
                                                 <div className="catalog-brand-title">
-                                                    <span>{categoriaProducto}</span>
+                                                    <span className={claseCategoria(categoriaProducto)}>
+                                                        {categoriaProducto}
+                                                    </span>
+
                                                     <h3>{marcaProducto}</h3>
                                                 </div>
 
@@ -192,11 +225,11 @@ function Catalogo() {
                                                                         )}
                                                                     </div>
 
-																	{producto.mostrar_precio && producto.precio && (
-																		<p className="catalog-price">
-																			${producto.precio}
-																		</p>
-																	)}
+                                                                    {producto.mostrar_precio && producto.precio && (
+                                                                        <p className="catalog-price">
+                                                                            ${producto.precio}
+                                                                        </p>
+                                                                    )}
 
                                                                     <a
                                                                         className="catalog-whatsapp"

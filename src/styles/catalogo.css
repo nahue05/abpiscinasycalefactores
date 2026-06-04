@@ -164,10 +164,8 @@
 }
 
 .catalog-brand-title {
-    max-width: 1240px;
-    margin: 0 auto;
     width: 100%;
-    padding-left: 4px;
+    padding-left: 0;
 }
 
 .catalog-brand-title span {
@@ -560,4 +558,189 @@
         justify-content: center;
         flex-wrap: wrap;
     }
+}
+
+.catalog-hero {
+    padding: 52px 7% 18px;
+    text-align: center;
+}
+
+.catalog-title {
+    color: var(--dark);
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1;
+    letter-spacing: -1.8px;
+    margin-bottom: 14px;
+}
+
+.catalog-title-gradient {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.catalog-title-heaters {
+    color: var(--secondary);
+}
+
+.catalog-title-pools {
+    color: var(--primary);
+}
+
+.catalog-hero p {
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+.catalog-quick-links {
+    margin: 22px auto 0;
+}
+
+.catalog-section {
+    padding: 12px 7% 72px;
+}
+
+.catalog-groups {
+    gap: 48px;
+}
+
+.catalog-category-block {
+    gap: 34px;
+    scroll-margin-top: 100px;
+}
+
+.catalog-brand-block {
+    gap: 18px;
+}
+
+.catalog-brand-title span,
+.catalog-brand-category {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.catalog-brand-category-heaters {
+    color: var(--secondary);
+}
+
+.catalog-brand-category-pools {
+    color: var(--primary);
+}
+
+.catalog-brand-title h3 {
+    font-size: clamp(28px, 3.2vw, 42px);
+    letter-spacing: -1px;
+}
+
+.catalog-grid {
+    gap: 18px;
+}
+
+@media (max-width: 760px) {
+    .catalog-hero {
+        padding: 38px 5% 12px;
+    }
+
+    .catalog-title {
+        font-size: 38px;
+        letter-spacing: -1.4px;
+        margin-bottom: 12px;
+    }
+
+    .catalog-hero p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .catalog-quick-links {
+        margin-top: 20px;
+    }
+
+    .catalog-section {
+        padding: 12px 5% 60px;
+    }
+
+    .catalog-groups {
+        gap: 42px;
+    }
+
+    .catalog-category-block {
+        gap: 32px;
+        scroll-margin-top: 82px;
+    }
+
+    .catalog-brand-block {
+        gap: 18px;
+    }
+
+    .catalog-brand-title h3 {
+        font-size: 32px;
+    }
+}
+
+.catalog-title {
+    color: var(--dark);
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1;
+    letter-spacing: -1.8px;
+    margin-bottom: 14px;
+}
+
+.catalog-title-gradient {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.catalog-title-heaters {
+    color: var(--secondary);
+}
+
+.catalog-title-pools {
+    color: var(--primary);
+}
+
+.catalog-brand-category {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.catalog-brand-category-heaters {
+    color: var(--secondary);
+}
+
+.catalog-brand-category-pools {
+    color: var(--primary);
+}
+
+.catalog-hero h1.catalog-title-gradient {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.catalog-hero h1.catalog-title-heaters {
+    color: var(--secondary);
+}
+
+.catalog-hero h1.catalog-title-pools {
+    color: var(--primary);
 }

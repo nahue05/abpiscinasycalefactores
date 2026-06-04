@@ -19,9 +19,9 @@ function CatalogHeader() {
                     <FaTimes />
                 </button>
                 <a href="/" onClick={closeMenu}>Inicio</a>
-                <a href="/catalogo" onClick={closeMenu}>Todo el catálogo</a>
+                <a href="/catalogo" onClick={closeMenu}>Todos los productos</a>
+				<a href="/catalogo?categoria=Piscinas" onClick={closeMenu}>Piscinas</a>
 				<a href="/catalogo?categoria=Calefactores" onClick={closeMenu}>Calefactores</a>
-                <a href="/catalogo?categoria=Piscinas" onClick={closeMenu}>Piscinas</a>
             </nav>
 
             <button
