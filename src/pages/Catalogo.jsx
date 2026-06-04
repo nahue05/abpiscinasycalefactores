@@ -169,9 +169,7 @@ function Catalogo() {
                         {categoria ? categoria : "Todos los productos"}
                     </h1>
 
-                    <p>
-                        Elegí una sección para ir directo a los productos que estás buscando.
-                    </p>
+                    
 
                     {!cargando && enlacesCatalogo.length > 0 && (
                         <nav className="catalog-quick-links" aria-label="Secciones del catálogo">
