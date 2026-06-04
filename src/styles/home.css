@@ -853,11 +853,12 @@
 		font-size: 17px;
 		font-weight: 900;
 		letter-spacing: -0.2px;
+		text-align: center;
 		border-bottom: none;
 		background: rgba(244, 251, 253, 0.96);
 		box-shadow: inset 0 0 0 1px rgba(17, 48, 71, 0.05);
 	}
-
+	
     .menu-close {
         position: absolute;
         top: 18px;

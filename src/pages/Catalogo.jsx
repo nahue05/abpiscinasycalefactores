@@ -15,6 +15,10 @@ function crearId(texto) {
         .replace(/^-+|-+$/g, "");
 }
 
+function limpiarTexto(texto) {
+    return texto ? texto.trim() : "";
+}
+
 function ordenarCategorias(categorias) {
     const orden = ["Piscinas", "Calefactores"];
 
@@ -66,18 +70,34 @@ function claseCategoria(categoria) {
     return "catalog-brand-category";
 }
 
-function obtenerGrupoProducto(producto) {
-    if (producto.categoria === "Piscinas") {
-        return producto.subcategoria || producto.marca || "Otros";
+function claseImagenCategoria(categoria) {
+    if (categoria === "Calefactores") {
+        return "catalog-image-heaters";
     }
 
-    return producto.marca || producto.subcategoria || "Otros";
+    if (categoria === "Piscinas") {
+        return "catalog-image-pools";
+    }
+
+    return "";
+}
+
+function obtenerGrupoProducto(producto) {
+    const categoriaProducto = limpiarTexto(producto.categoria);
+    const marcaProducto = limpiarTexto(producto.marca);
+    const subcategoriaProducto = limpiarTexto(producto.subcategoria);
+
+    if (categoriaProducto === "Piscinas") {
+        return subcategoriaProducto || marcaProducto || "Otros";
+    }
+
+    return marcaProducto || subcategoriaProducto || "Otros";
 }
 
 function Catalogo() {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
-	const [descripcionAbierta, setDescripcionAbierta] = useState(null);
+    const [descripcionAbierta, setDescripcionAbierta] = useState(null);
     const [searchParams] = useSearchParams();
 
     const categoria = searchParams.get("categoria");
@@ -87,15 +107,69 @@ function Catalogo() {
         obtenerProductos();
     }, [categoria]);
 
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 760px)");
+
+        if (!mediaQuery.matches || cargando) {
+            return;
+        }
+
+        const elementos = document.querySelectorAll(
+            ".catalog-title, .catalog-quick-links, .catalog-brand-title, .catalog-card"
+        );
+
+        const observador = new IntersectionObserver(
+            (entradas) => {
+                entradas.forEach((entrada) => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add("catalog-mobile-visible");
+                        observador.unobserve(entrada.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.12,
+                rootMargin: "0px 0px -8% 0px"
+            }
+        );
+
+        elementos.forEach((elemento) => {
+            elemento.classList.add("catalog-mobile-reveal");
+
+            if (elemento.classList.contains("catalog-title")) {
+                elemento.classList.add("catalog-mobile-fade-up");
+            } else if (elemento.classList.contains("catalog-quick-links")) {
+                elemento.classList.add("catalog-mobile-fade-up");
+            } else if (elemento.classList.contains("catalog-brand-title")) {
+                elemento.classList.add("catalog-mobile-blur-in");
+            } else if (elemento.classList.contains("catalog-card")) {
+                const cards = Array.from(document.querySelectorAll(".catalog-card"));
+                const index = cards.indexOf(elemento);
+
+                if (index % 2 === 0) {
+                    elemento.classList.add("catalog-mobile-slide-left");
+                } else {
+                    elemento.classList.add("catalog-mobile-slide-right");
+                }
+            }
+
+            observador.observe(elemento);
+        });
+
+        return () => {
+            observador.disconnect();
+        };
+    }, [cargando, productos, categoria]);
+
     async function obtenerProductos() {
         setCargando(true);
 
         let query = supabase
-		.from("productos")
-		.select("*")
-		.eq("activo", true)
-		.order("marca", { ascending: true })
-		.order("modelo", { ascending: true });
+            .from("productos")
+            .select("*")
+            .eq("activo", true)
+            .order("marca", { ascending: true })
+            .order("modelo", { ascending: true });
 
         if (categoria) {
             query = query.eq("categoria", categoria);
@@ -105,6 +179,7 @@ function Catalogo() {
 
         if (error) {
             console.log("Error al obtener productos:", error);
+            setProductos([]);
             setCargando(false);
             return;
         }
@@ -117,7 +192,7 @@ function Catalogo() {
         const grupos = {};
 
         productos.forEach((producto) => {
-            const categoriaProducto = producto.categoria || "Otros";
+            const categoriaProducto = limpiarTexto(producto.categoria) || "Otros";
             const grupoProducto = obtenerGrupoProducto(producto);
 
             if (!grupos[categoriaProducto]) {
@@ -156,9 +231,10 @@ function Catalogo() {
         return enlaces;
     }, [categoriasOrdenadas, gruposCatalogo]);
 
-	function toggleDescripcion(idProducto) {
-		setDescripcionAbierta((idActual) => idActual === idProducto ? null : idProducto);
-	}
+    function toggleDescripcion(idProducto) {
+        setDescripcionAbierta((idActual) => idActual === idProducto ? null : idProducto);
+    }
+
     return (
         <>
             <CatalogHeader />
@@ -168,8 +244,6 @@ function Catalogo() {
                     <h1 className={claseTituloPrincipal(categoria)}>
                         {categoria ? categoria : "Todos los productos"}
                     </h1>
-
-                    
 
                     {!cargando && enlacesCatalogo.length > 0 && (
                         <nav className="catalog-quick-links" aria-label="Secciones del catálogo">
@@ -210,10 +284,7 @@ function Catalogo() {
                                 const grupos = gruposCatalogo[categoriaProducto];
 
                                 return (
-                                    <section
-                                        className="catalog-category-block"
-                                        key={categoriaProducto}
-                                    >
+                                    <section className="catalog-category-block" key={categoriaProducto}>
                                         {Object.entries(grupos).map(([grupoProducto, productosGrupo]) => {
                                             const idGrupo = crearId(`${categoriaProducto}-${grupoProducto}`);
 
@@ -235,10 +306,12 @@ function Catalogo() {
                                                         {productosGrupo.map((producto) => {
                                                             const mensaje = `Hola, vi esta ${producto.marca} ${producto.modelo} en su catálogo y quería más información.`;
                                                             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+                                                            const descripcionEstaAbierta = descripcionAbierta === producto.id;
+                                                            const categoriaProductoCard = limpiarTexto(producto.categoria);
 
                                                             return (
                                                                 <article className="catalog-card" key={producto.id}>
-                                                        			<div className={`catalog-image ${producto.categoria === "Calefactores" ? "catalog-image-heaters" : "catalog-image-pools"}`}>
+                                                                    <div className={`catalog-image ${claseImagenCategoria(categoriaProductoCard)}`}>
                                                                         {producto.imagen_url && producto.imagen_url.trim() !== "" ? (
                                                                             <img src={producto.imagen_url} alt={`${producto.marca} ${producto.modelo}`} />
                                                                         ) : (
@@ -247,30 +320,30 @@ function Catalogo() {
                                                                             </div>
                                                                         )}
 
-																		{producto.descripcion_breve && (
-																			<>
-																				<button
-																					type="button"
-																					className={`catalog-mobile-info-button ${descripcionAbierta === producto.id ? "catalog-mobile-info-button-open" : ""}`}
-																					onClick={() => toggleDescripcion(producto.id)}
-																					aria-label={
-																						descripcionAbierta === producto.id
-																							? `Cerrar descripción de ${producto.marca} ${producto.modelo}`
-																							: `Ver descripción de ${producto.marca} ${producto.modelo}`
-																					}
-																				>
-																					<span className="catalog-info-text">Más info</span>
-																				</button>
+                                                                        {producto.descripcion_breve && (
+                                                                            <>
+                                                                                <button
+                                                                                    type="button"
+                                                                                    className={`catalog-mobile-info-button ${descripcionEstaAbierta ? "catalog-mobile-info-button-open" : ""}`}
+                                                                                    onClick={() => toggleDescripcion(producto.id)}
+                                                                                    aria-label={
+                                                                                        descripcionEstaAbierta
+                                                                                            ? `Cerrar descripción de ${producto.marca} ${producto.modelo}`
+                                                                                            : `Ver descripción de ${producto.marca} ${producto.modelo}`
+                                                                                    }
+                                                                                >
+                                                                                    <span className="catalog-info-text">Más info</span>
+                                                                                </button>
 
-																				<div className={`catalog-description-hover ${descripcionAbierta === producto.id ? "catalog-description-open" : ""}`}>
-																					<p>{producto.descripcion_breve}</p>
-																				</div>
-																			</>
-																		)}
+                                                                                <div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
+                                                                                    <p>{producto.descripcion_breve}</p>
+                                                                                </div>
+                                                                            </>
+                                                                        )}
                                                                     </div>
 
                                                                     <div className="catalog-content">
-                                                                        <span className="catalog-category">{producto.categoria}</span>
+                                                                        <span className="catalog-category">{categoriaProductoCard}</span>
 
                                                                         <h3>{producto.marca} {producto.modelo}</h3>
 
