@@ -719,10 +719,8 @@
 	.header {
 		height: 68px;
 		overflow: visible;
-		background:
-			radial-gradient(circle at 92% 0%, rgba(32, 185, 223, 0.22), transparent 34%),
-			radial-gradient(circle at 8% 100%, rgba(230, 79, 157, 0.16), transparent 36%),
-			linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(244, 251, 253, 0.9));
+		background: rgba(255, 255, 255, 0.78);
+		backdrop-filter: blur(18px);
 		box-shadow: 0 8px 22px rgba(17, 48, 71, 0.045);
 	}
 
@@ -732,23 +730,6 @@
 		width: min(100% - 28px, 1240px);
 		gap: 12px;
 	}
-
-	.header::after {
-    content: "";
-    position: absolute;
-    left: -18%;
-    right: -18%;
-    bottom: -34px;
-    height: 58px;
-    z-index: -1;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.94) 0 30px, transparent 31px),
-        radial-gradient(circle at 48% 18%, rgba(244, 251, 253, 0.92) 0 38px, transparent 39px),
-        radial-gradient(circle at 78% 4%, rgba(255, 255, 255, 0.9) 0 32px, transparent 33px),
-        linear-gradient(180deg, rgba(244, 251, 253, 0.9), rgba(244, 251, 253, 0));
-    filter: drop-shadow(0 10px 14px rgba(17, 48, 71, 0.035));
-}
 
     .logo img {
         height: 48px;
@@ -896,12 +877,12 @@
             linear-gradient(180deg, #ffffff 0%, #f4fbfd 42%, #ffffff 100%);
     }
 
-    .hero {
-        position: relative;
-        padding: 38px 5% 34px;
-        background: transparent;
-        overflow: hidden;
-    }
+	.hero {
+		position: relative;
+		padding: 46px 5% 34px;
+		background: transparent;
+		overflow: hidden;
+	}
 
     .hero::after {
         content: "";
