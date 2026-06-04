@@ -785,7 +785,7 @@
         font-weight: 500;
         line-height: 1;
         opacity: 0;
-        transform: translateX(-14px);
+		transform: translateX(-14px) rotate(-360deg);
         transition:
             opacity 0.24s ease,
             transform 0.24s ease;
@@ -797,8 +797,8 @@
     }
 
     .catalog-mobile-info-button-open::before {
-        opacity: 1;
-        transform: translateX(0);
+		opacity: 1;
+		transform: translateX(0) rotate(0deg);
     }
 
     .catalog-card:hover .catalog-description-hover {
