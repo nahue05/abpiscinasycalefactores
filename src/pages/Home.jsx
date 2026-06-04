@@ -96,7 +96,7 @@ function Home() {
                         </div>
                     </a>
 
-                    <a href="/catalogo?categoria=Calefacción" className="product-card heater">
+                    <a href="/catalogo?categoria=Calefactores" className="product-card heater">
                         <div>
                             <span>Calefacción</span>
                             <h3>Calefactores y estufas</h3>
