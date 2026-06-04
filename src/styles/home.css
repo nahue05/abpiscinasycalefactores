@@ -682,29 +682,7 @@
 }
 
 /* Responsive */
-@keyframes mobile-slide-left {
-    from {
-        opacity: 0.15;
-        transform: translateX(-34px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes mobile-slide-right {
-    from {
-        opacity: 0.15;
-        transform: translateX(34px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 @media (max-width: 1100px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
@@ -1187,32 +1165,39 @@
         background: #ffffff;
         border-radius: 50% 50% 0 0;
     }
-
-    @supports (animation-timeline: view()) {
-        .service-card,
-        .product-card,
-        .work-grid div,
-        .faq-list article {
-            animation-duration: 1ms;
-            animation-fill-mode: both;
-            animation-timeline: view();
-            animation-range: entry 0% cover 34%;
-        }
-
-        .service-card:nth-child(odd),
-        .product-card:nth-child(odd),
-        .work-grid div:nth-child(odd),
-        .faq-list article:nth-child(odd) {
-            animation-name: mobile-slide-left;
-        }
-
-        .service-card:nth-child(even),
-        .product-card:nth-child(even),
-        .work-grid div:nth-child(even),
-        .faq-list article:nth-child(even) {
-            animation-name: mobile-slide-right;
-        }
+	    .mobile-reveal {
+        opacity: 0;
+        transition:
+            opacity 0.72s ease,
+            transform 0.72s ease;
+        will-change: opacity, transform;
     }
+
+    .mobile-reveal-left {
+        transform: translateX(-34px);
+    }
+
+    .mobile-reveal-right {
+        transform: translateX(34px);
+    }
+
+    .mobile-visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .section-title.mobile-reveal-left,
+    .section-title.mobile-reveal-right,
+    .contact.mobile-reveal-left,
+    .contact.mobile-reveal-right {
+        transform: translateY(24px);
+    }
+
+    .section-title.mobile-visible,
+    .contact.mobile-visible {
+        transform: translateY(0);
+    }
+    
 }
 
 @media (max-width: 560px) {

@@ -1,8 +1,51 @@
+import { useEffect } from "react";
 import "../styles/home.css";
 import HomeHeader from "../components/HomeHeader.jsx";
 import Footer from "../components/Footer.jsx";
 
 function Home() {
+	    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 760px)");
+
+        if (!mediaQuery.matches) {
+            return;
+        }
+
+        const elementos = document.querySelectorAll(
+            ".hero-content, .hero-card, .section-title, .service-card, .product-card, .work-grid div, .faq-list article, .contact"
+        );
+
+        const observador = new IntersectionObserver(
+            (entradas) => {
+                entradas.forEach((entrada) => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add("mobile-visible");
+                        observador.unobserve(entrada.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.14,
+                rootMargin: "0px 0px -8% 0px"
+            }
+        );
+
+        elementos.forEach((elemento, index) => {
+            elemento.classList.add("mobile-reveal");
+
+            if (index % 2 === 0) {
+                elemento.classList.add("mobile-reveal-left");
+            } else {
+                elemento.classList.add("mobile-reveal-right");
+            }
+
+            observador.observe(elemento);
+        });
+
+        return () => {
+            observador.disconnect();
+        };
+    }, []);
     const whatsappNumber = "59892334060";
     const whatsappMessage = "Hola, me gustaría obtener información sobre...";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
