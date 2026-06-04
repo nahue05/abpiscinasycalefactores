@@ -748,57 +748,160 @@
         font-size: 20px;
     }
 
-    .mobile-menu-button {
-        width: 44px;
-        height: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background:
-            linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 251, 253, 0.95));
-        border: 1px solid rgba(32, 185, 223, 0.18);
-        box-shadow: 0 10px 24px rgba(17, 48, 71, 0.08);
-    }
+	.mobile-menu-button {
+		width: 42px;
+		height: 42px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		border: 1px solid rgba(17, 48, 71, 0.1);
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.72);
+		box-shadow: 0 10px 24px rgba(17, 48, 71, 0.08);
+		backdrop-filter: blur(12px);
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
 
-    .mobile-menu-button svg {
-        font-size: 22px;
-    }
+	.mobile-menu-button span {
+		width: 18px;
+		height: 2px;
+		position: absolute;
+		border-radius: 999px;
+		background: var(--dark);
+		transition:
+			transform 0.28s ease,
+			opacity 0.2s ease,
+			background 0.24s ease;
+	}
 
-    .nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: min(72vw, 280px);
-        height: 100vh;
-        z-index: 1002;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 84px 24px 28px;
-        font-size: 18px;
-        background:
-            radial-gradient(circle at top right, rgba(32, 185, 223, 0.18), transparent 35%),
-            radial-gradient(circle at bottom left, rgba(230, 79, 157, 0.14), transparent 36%),
-            linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 251, 253, 0.98));
-        box-shadow: -18px 0 45px rgba(17, 48, 71, 0.16);
-        transform: translateX(110%);
-        transition: transform 0.28s ease;
-    }
+	.mobile-menu-button span:nth-child(1) {
+		transform: translateY(-6px);
+	}
 
-    .nav-open {
-        transform: translateX(0);
-    }
+	.mobile-menu-button span:nth-child(2) {
+		transform: translateY(0);
+	}
 
-    .nav a {
-        width: 100%;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(17, 48, 71, 0.08);
-    }
+	.mobile-menu-button span:nth-child(3) {
+		transform: translateY(6px);
+	}
 
-    .nav a::after {
-        display: none;
-    }
+	.mobile-menu-button-open span {
+		background: var(--secondary);
+	}
+
+	.mobile-menu-button-open span:nth-child(1) {
+		transform: rotate(225deg);
+	}
+
+	.mobile-menu-button-open span:nth-child(2) {
+		opacity: 0;
+		transform: translateX(12px);
+	}
+
+	.mobile-menu-button-open span:nth-child(3) {
+		transform: rotate(-225deg);
+	}
+
+	.mobile-menu-button:active,
+	.mobile-menu-button:focus,
+	.mobile-menu-button:focus-visible {
+		outline: none;
+		transform: none;
+	}
+
+	.nav {
+		position: fixed;
+		top: 76px;
+		right: 14px;
+		width: min(78vw, 310px);
+		height: auto;
+		max-height: calc(100vh - 96px);
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+		gap: 6px;
+		padding: 18px;
+		border-radius: 30px;
+		background:
+			radial-gradient(circle at top right, rgba(32, 185, 223, 0.18), transparent 34%),
+			radial-gradient(circle at bottom left, rgba(230, 79, 157, 0.16), transparent 34%),
+			rgba(255, 255, 255, 0.82);
+		border: 1px solid rgba(255, 255, 255, 0.62);
+		box-shadow: 0 22px 70px rgba(17, 48, 71, 0.18);
+		backdrop-filter: blur(18px);
+		transform: translateX(calc(100% + 24px));
+		opacity: 0;
+		pointer-events: none;
+		transition:
+			transform 0.28s ease,
+			opacity 0.24s ease;
+		z-index: 1002;
+	}
+
+	.nav-open {
+		transform: translateX(0);
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.nav a {
+		width: 100%;
+		position: relative;
+		padding: 15px 16px 15px 46px;
+		border-radius: 18px;
+		color: var(--dark);
+		font-size: 17px;
+		font-weight: 900;
+		letter-spacing: -0.2px;
+		border-bottom: none;
+		background: rgba(255, 255, 255, 0.42);
+		transition:
+			background 0.2s ease,
+			color 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.nav a::before {
+		position: absolute;
+		left: 16px;
+		top: 50%;
+		transform: translateY(-50%);
+		color: var(--secondary);
+		font-size: 12px;
+		font-weight: 900;
+		opacity: 0.72;
+	}
+
+	.nav a:nth-child(1)::before {
+		content: "01";
+	}
+
+	.nav a:nth-child(2)::before {
+		content: "02";
+	}
+
+	.nav a:nth-child(3)::before {
+		content: "03";
+	}
+
+	.nav a:nth-child(4)::before {
+		content: "04";
+	}
+
+	.nav a:nth-child(5)::before {
+		content: "05";
+	}
+
+	.nav a:hover,
+	.nav a:active {
+		background: rgba(255, 255, 255, 0.72);
+		color: var(--secondary);
+		transform: translateX(-3px);
+	}
 
     .menu-close {
         position: absolute;
@@ -819,22 +922,23 @@
     .menu-close svg {
         font-size: 20px;
     }
+	
+	.menu-overlay {
+		display: block;
+		position: fixed;
+		inset: 0;
+		background: rgba(17, 48, 71, 0.18);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.24s ease;
+		backdrop-filter: blur(2px);
+		z-index: 1001;
+	}
 
-    .menu-overlay {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 1001;
-        background: rgba(17, 48, 71, 0.32);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-    }
-
-    .menu-overlay-open {
-        opacity: 1;
-        pointer-events: auto;
-    }
+	.menu-overlay-open {
+		opacity: 1;
+		pointer-events: auto;
+	}
 
     .hero {
         min-height: auto;

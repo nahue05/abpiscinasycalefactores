@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaWhatsapp, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 function HomeHeader() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -20,9 +20,7 @@ function HomeHeader() {
                 </a>
 
                 <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
-                    <button className="menu-close" onClick={closeMenu} aria-label="Cerrar menú">
-                        <FaTimes />
-                    </button>
+                    
 
                     <a href="#servicios" onClick={closeMenu}>Servicios</a>
                     <a href="#productos" onClick={closeMenu}>Productos</a>
@@ -53,13 +51,16 @@ function HomeHeader() {
                     </a>
                 </div>
 
-                <button
-                    className="mobile-menu-button"
-                    onClick={() => setMenuOpen(true)}
-                    aria-label="Abrir menú"
-                >
-                    <FaBars />
-                </button>
+				<button
+					className={`mobile-menu-button ${menuOpen ? "mobile-menu-button-open" : ""}`}
+					onClick={() => setMenuOpen(!menuOpen)}
+					aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+					aria-expanded={menuOpen}
+				>
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
             </div>
 
             <div
