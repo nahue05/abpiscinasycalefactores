@@ -1313,7 +1313,7 @@
 
     .nav {
         width: min(68vw, 260px);
-        padding: 78px 22px 24px;
+        padding: 16px;
         font-size: 17px;
     }
 
