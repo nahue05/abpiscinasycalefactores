@@ -90,10 +90,11 @@ function Catalogo() {
         setCargando(true);
 
         let query = supabase
-            .from("productos")
-            .select("*")
-            .eq("activo", true)
-            .order("created_at", { ascending: false });
+		.from("productos")
+		.select("*")
+		.eq("activo", true)
+		.order("marca", { ascending: true })
+		.order("modelo", { ascending: true });
 
         if (categoria) {
             query = query.eq("categoria", categoria);
