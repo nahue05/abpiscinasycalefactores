@@ -77,6 +77,7 @@ function obtenerGrupoProducto(producto) {
 function Catalogo() {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
+	const [descripcionAbierta, setDescripcionAbierta] = useState(null);
     const [searchParams] = useSearchParams();
 
     const categoria = searchParams.get("categoria");
@@ -155,6 +156,9 @@ function Catalogo() {
         return enlaces;
     }, [categoriasOrdenadas, gruposCatalogo]);
 
+	function toggleDescripcion(idProducto) {
+		setDescripcionAbierta((idActual) => idActual === idProducto ? null : idProducto);
+	}
     return (
         <>
             <CatalogHeader />
@@ -245,11 +249,22 @@ function Catalogo() {
                                                                             </div>
                                                                         )}
 
-                                                                        {producto.descripcion_breve && (
-                                                                            <div className="catalog-description-hover">
-                                                                                <p>{producto.descripcion_breve}</p>
-                                                                            </div>
-                                                                        )}
+																		{producto.descripcion_breve && (
+																			<>
+																				<button
+																					type="button"
+																					className="catalog-mobile-info-button"
+																					onClick={() => toggleDescripcion(producto.id)}
+																					aria-label={`Ver descripción de ${producto.marca} ${producto.modelo}`}
+																				>
+																					Más info
+																				</button>
+
+																				<div className={`catalog-description-hover ${descripcionAbierta === producto.id ? "catalog-description-open" : ""}`}>
+																					<p>{producto.descripcion_breve}</p>
+																				</div>
+																			</>
+																		)}
                                                                     </div>
 
                                                                     <div className="catalog-content">
