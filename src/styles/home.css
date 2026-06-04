@@ -722,6 +722,7 @@
 		background: rgba(255, 255, 255, 0.78);
 		backdrop-filter: blur(18px);
 		box-shadow: 0 8px 22px rgba(17, 48, 71, 0.045);
+		z-index: 1004;
 	}
 
 	.header-container {
@@ -827,12 +828,12 @@
 		padding: 18px;
 		border-radius: 30px;
 		background:
-			radial-gradient(circle at top right, rgba(32, 185, 223, 0.18), transparent 34%),
-			radial-gradient(circle at bottom left, rgba(230, 79, 157, 0.16), transparent 34%),
-			rgba(255, 255, 255, 0.82);
+			radial-gradient(circle at top right, rgba(32, 185, 223, 0.16), transparent 34%),
+			radial-gradient(circle at bottom left, rgba(230, 79, 157, 0.13), transparent 34%),
+			rgba(255, 255, 255, 0.86);
 		border: 1px solid rgba(255, 255, 255, 0.62);
 		box-shadow: 0 22px 70px rgba(17, 48, 71, 0.18);
-		backdrop-filter: blur(18px);
+		backdrop-filter: blur(16px);
 		transform: translateX(calc(100% + 24px));
 		opacity: 0;
 		pointer-events: none;
@@ -851,7 +852,7 @@
 	.nav a {
 		width: 100%;
 		position: relative;
-		padding: 15px 16px 15px 46px;
+		padding: 15px 18px;
 		border-radius: 18px;
 		color: var(--dark);
 		font-size: 17px;
@@ -863,37 +864,6 @@
 			background 0.2s ease,
 			color 0.2s ease,
 			transform 0.2s ease;
-	}
-
-	.nav a::before {
-		position: absolute;
-		left: 16px;
-		top: 50%;
-		transform: translateY(-50%);
-		color: var(--secondary);
-		font-size: 12px;
-		font-weight: 900;
-		opacity: 0.72;
-	}
-
-	.nav a:nth-child(1)::before {
-		content: "01";
-	}
-
-	.nav a:nth-child(2)::before {
-		content: "02";
-	}
-
-	.nav a:nth-child(3)::before {
-		content: "03";
-	}
-
-	.nav a:nth-child(4)::before {
-		content: "04";
-	}
-
-	.nav a:nth-child(5)::before {
-		content: "05";
 	}
 
 	.nav a:hover,
@@ -922,7 +892,7 @@
     .menu-close svg {
         font-size: 20px;
     }
-	
+
 	.menu-overlay {
 		display: block;
 		position: fixed;
