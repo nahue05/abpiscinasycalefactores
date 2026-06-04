@@ -249,19 +249,18 @@ function Catalogo() {
 
 																		{producto.descripcion_breve && (
 																			<>
-																		<button
-																			type="button"
-																			className={`catalog-mobile-info-button ${descripcionAbierta === producto.id ? "catalog-mobile-info-button-open" : ""}`}
-																			onClick={() => toggleDescripcion(producto.id)}
-																			aria-label={
-																				descripcionAbierta === producto.id
-																					? `Cerrar descripción de ${producto.marca} ${producto.modelo}`
-																					: `Ver descripción de ${producto.marca} ${producto.modelo}`
-																			}
-																		>
-																			<span className="catalog-info-text">Más info</span>
-																			<span className="catalog-info-x">×</span>
-																		</button>
+																				<button
+																					type="button"
+																					className={`catalog-mobile-info-button ${descripcionAbierta === producto.id ? "catalog-mobile-info-button-open" : ""}`}
+																					onClick={() => toggleDescripcion(producto.id)}
+																					aria-label={
+																						descripcionAbierta === producto.id
+																							? `Cerrar descripción de ${producto.marca} ${producto.modelo}`
+																							: `Ver descripción de ${producto.marca} ${producto.modelo}`
+																					}
+																				>
+																					<span className="catalog-info-text">Más info</span>
+																				</button>
 
 																				<div className={`catalog-description-hover ${descripcionAbierta === producto.id ? "catalog-description-open" : ""}`}>
 																					<p>{producto.descripcion_breve}</p>
