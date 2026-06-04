@@ -236,7 +236,8 @@ function Catalogo() {
     }
 
     return (
-        <>
+        
+		<div className="catalog-shell">
             <CatalogHeader />
 
             <main className="catalog-page">
@@ -393,7 +394,8 @@ function Catalogo() {
             </main>
 
             <Footer catalogo />
-        </>
+		</div>
+        
     );
 }
 
