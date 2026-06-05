@@ -688,13 +688,14 @@
         padding-top: 68px;
     }
 
-    .header {
-        height: 68px;
-        background: rgba(255, 255, 255, 0.78);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        box-shadow: 0 8px 22px rgba(17, 48, 71, 0.045);
-    }
+	.header {
+		height: 68px;
+		background: rgba(255, 255, 255, 0.78);
+		backdrop-filter: blur(18px);
+		-webkit-backdrop-filter: blur(18px);
+		box-shadow: 0 8px 22px rgba(17, 48, 71, 0.045);
+		z-index: 1000;
+	}
 
     .header-container {
         position: relative;
@@ -849,23 +850,24 @@
         transform: none;
     }
 
-    .menu-overlay {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 1001;
-        border: none;
-        padding: 0;
-        background: rgba(17, 48, 71, 0.08);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.24s ease;
-    }
+	.menu-overlay {
+		display: block;
+		position: fixed;
+		inset: 0;
+		z-index: 999;
+		border: none;
+		padding: 0;
+		margin: 0;
+		background: rgba(17, 48, 71, 0.08);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.24s ease;
+	}
 
-    .menu-overlay-open {
-        opacity: 1;
-        pointer-events: auto;
-    }
+	.menu-overlay-open {
+		opacity: 1;
+		pointer-events: auto;
+	}
 
     .hero {
         min-height: auto;
