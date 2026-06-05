@@ -71,14 +71,6 @@
     color: var(--dark);
 }
 
-.catalog-mobile-menu-button {
-    display: none;
-}
-
-.catalog-menu-overlay {
-    display: none;
-}
-
 .catalog-page {
     width: 100%;
     max-width: 100vw;
@@ -519,71 +511,6 @@
 
     .catalog-logo img {
         height: 54px;
-    }
-
-    .catalog-mobile-menu-button {
-        display: inline-flex;
-        width: 42px;
-        height: 42px;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        border: 1px solid rgba(17, 48, 71, 0.1);
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.72);
-        box-shadow: 0 10px 24px rgba(17, 48, 71, 0.08);
-        backdrop-filter: blur(12px);
-        cursor: pointer;
-        z-index: 1004;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .catalog-mobile-menu-button span {
-        width: 18px;
-        height: 2px;
-        position: absolute;
-        border-radius: 999px;
-        background: var(--dark);
-        transition:
-            transform 0.28s ease,
-            opacity 0.2s ease,
-            background 0.24s ease;
-    }
-
-    .catalog-mobile-menu-button span:nth-child(1) {
-        transform: translateY(-6px);
-    }
-
-    .catalog-mobile-menu-button span:nth-child(2) {
-        transform: translateY(0);
-    }
-
-    .catalog-mobile-menu-button span:nth-child(3) {
-        transform: translateY(6px);
-    }
-
-    .catalog-mobile-menu-button-open span {
-        background: var(--secondary);
-    }
-
-    .catalog-mobile-menu-button-open span:nth-child(1) {
-        transform: rotate(225deg);
-    }
-
-    .catalog-mobile-menu-button-open span:nth-child(2) {
-        opacity: 0;
-        transform: translateX(12px);
-    }
-
-    .catalog-mobile-menu-button-open span:nth-child(3) {
-        transform: rotate(-225deg);
-    }
-
-    .catalog-mobile-menu-button:active,
-    .catalog-mobile-menu-button:focus,
-    .catalog-mobile-menu-button:focus-visible {
-        outline: none;
-        transform: none;
     }
 
     .catalog-nav {
