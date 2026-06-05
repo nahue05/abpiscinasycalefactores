@@ -294,6 +294,10 @@ html {
     padding-top: 46px;
 }
 
+.faq-section {
+    padding-bottom: 18px;
+}
+
 .section-title h2 {
     color: var(--dark);
     font-size: clamp(32px, 4vw, 52px);
@@ -598,7 +602,7 @@ html {
 }
 
 .contact {
-    margin: 96px 7%;
+    margin: 24px 7% 72px;
     padding: 76px 42px;
     text-align: center;
     border-radius: 40px;
