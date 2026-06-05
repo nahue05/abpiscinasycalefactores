@@ -692,7 +692,7 @@ html {
 	#productos,
 	#trabajos,
 	#contacto {
-		scroll-margin-top: 86px;
+		scroll-margin-top: 32px;
 	}
 	
 	.home-main {
@@ -1256,7 +1256,7 @@ html {
 	#productos,
 	#trabajos,
 	#contacto {
-		scroll-margin-top: 82px;
+		scroll-margin-top: 30px;
 	}
 
 	.home-main {
