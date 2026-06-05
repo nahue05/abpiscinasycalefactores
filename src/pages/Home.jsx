@@ -20,7 +20,8 @@ function Home() {
                 entradas.forEach((entrada) => {
                     if (entrada.isIntersecting) {
                         entrada.target.classList.add("mobile-visible");
-                        observador.unobserve(entrada.target);
+                    } else {
+                        entrada.target.classList.remove("mobile-visible");
                     }
                 });
             },
