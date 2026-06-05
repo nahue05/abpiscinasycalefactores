@@ -232,7 +232,9 @@ function Catalogo() {
             } else if (elemento.classList.contains("catalog-brand-title")) {
                 elemento.classList.add("catalog-desktop-brand");
             } else if (elemento.classList.contains("catalog-card")) {
-                elemento.classList.add("catalog-desktop-card-slide");
+                const cards = Array.from(document.querySelectorAll(".catalog-card"));
+                const index = cards.indexOf(elemento);
+                elemento.classList.add("catalog-desktop-card-deck", `catalog-desktop-card-deck-${index % 4}`);
             }
 
             observador.observe(elemento);

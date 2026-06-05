@@ -445,15 +445,36 @@
         transform: translateY(22px);
     }
 
-    .catalog-desktop-card-slide {
+    .catalog-desktop-card-deck {
         filter: blur(3px);
-        transform: translateX(-24px) translateY(14px) scale(0.985);
+        transform-origin: left center;
+    }
+
+    .catalog-desktop-card-deck-0 {
+        transform: translateX(-92px) translateY(22px) scale(0.94) rotate(-5deg);
+        transition-delay: 0.02s;
+    }
+
+    .catalog-desktop-card-deck-1 {
+        transform: translateX(-124px) translateY(14px) scale(0.94) rotate(-2.5deg);
+        transition-delay: 0.08s;
+    }
+
+    .catalog-desktop-card-deck-2 {
+        transform: translateX(-156px) translateY(6px) scale(0.94) rotate(1.5deg);
+        transition-delay: 0.14s;
+    }
+
+    .catalog-desktop-card-deck-3 {
+        transform: translateX(-188px) translateY(-2px) scale(0.94) rotate(4deg);
+        transition-delay: 0.2s;
     }
 
     .catalog-desktop-visible {
         opacity: 1;
         filter: blur(0);
         transform: translateX(0) translateY(0) scale(1) rotate(0);
+        transition-delay: 0s;
     }
 }
 
