@@ -445,14 +445,9 @@
         transform: translateY(22px);
     }
 
-    .catalog-desktop-card-left {
+    .catalog-desktop-card-slide {
         filter: blur(3px);
-        transform: translateX(-18px) translateY(18px) scale(0.985) rotate(-0.25deg);
-    }
-
-    .catalog-desktop-card-right {
-        filter: blur(3px);
-        transform: translateX(18px) translateY(18px) scale(0.985) rotate(0.25deg);
+        transform: translateX(-24px) translateY(14px) scale(0.985);
     }
 
     .catalog-desktop-visible {
