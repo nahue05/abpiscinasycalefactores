@@ -485,7 +485,7 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         box-shadow: 0 8px 22px rgba(17, 48, 71, 0.045);
-        z-index: 2000;
+        z-index: 1000;
     }
 
     .catalog-logo img {
@@ -505,7 +505,7 @@
         box-shadow: 0 10px 24px rgba(17, 48, 71, 0.08);
         backdrop-filter: blur(12px);
         cursor: pointer;
-        z-index: 2004;
+        z-index: 1004;
         -webkit-tap-highlight-color: transparent;
     }
 
@@ -585,7 +585,7 @@
             transform 0.28s ease,
             opacity 0.24s ease,
             visibility 0.24s ease;
-        z-index: 2003;
+        z-index: 1003;
     }
 
     .catalog-nav-open {
@@ -990,7 +990,7 @@
 
     .catalog-header {
         height: 58px;
-		z-index: 1000;
+		
     }
 
     .catalog-logo img {
