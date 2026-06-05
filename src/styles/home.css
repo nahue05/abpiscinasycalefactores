@@ -202,7 +202,7 @@ html {
 
 .hero {
     min-height: calc(100vh - 104px);
-    padding: 76px 7%;
+    padding: 76px 7% 46px;
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
@@ -277,7 +277,7 @@ html {
 }
 
 .section {
-    padding: 68px 7%;
+    padding: 46px 7%;
 }
 
 .section-title {
