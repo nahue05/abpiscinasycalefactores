@@ -14,7 +14,7 @@ function Footer({ catalogo = false }) {
                     </a>
                 </div>
             ) : (
-                <a href="/" className="footer-top-link">
+                <a href="#inicio" className="footer-top-link">
                     Volver al inicio
                 </a>
             )}
