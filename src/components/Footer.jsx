@@ -1,14 +1,16 @@
 function Footer({ catalogo = false }) {
     return (
         <footer className={`footer ${catalogo ? "catalog-footer" : ""}`}>
-            <img src="/logo.png" alt="Andrés Berrutti Piscinas y Calefactores" />
+            <a href="/" aria-label="Ir al inicio">
+                <img src="/logo.png" alt="Andrés Berrutti Piscinas y Calefactores" />
+            </a>
 
             <p>© 2026 Andrés Berrutti Piscinas y Calefactores</p>
 
             {catalogo ? (
                 <div className="catalog-footer-links">
-                    <a href="/" className="footer-top-link">
-                        Inicio
+                    <a href="#catalogo-arriba" className="footer-top-link">
+                        Volver arriba
                     </a>
                 </div>
             ) : (

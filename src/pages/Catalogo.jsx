@@ -294,7 +294,7 @@ function Catalogo() {
 
     return (
         
-		<div className="catalog-shell">
+		<div className="catalog-shell" id="catalogo-arriba">
             <CatalogHeader />
 
             <main className="catalog-page">

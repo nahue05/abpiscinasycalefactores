@@ -665,49 +665,49 @@ html {
     }
 
     .desktop-premium-copy {
-        filter: blur(10px);
-        transform: translateY(34px);
+        filter: blur(5px);
+        transform: translateY(26px);
     }
 
     .desktop-premium-card {
-        filter: blur(8px);
-        transform: translateY(36px) scale(0.92) rotateX(8deg);
+        filter: blur(4px);
+        transform: translateY(28px) scale(0.95) rotateX(5deg);
         transform-origin: center bottom;
     }
 
     .desktop-premium-title {
-        filter: blur(9px);
-        transform: translateY(30px) scale(0.98);
+        filter: blur(4px);
+        transform: translateY(24px) scale(0.99);
     }
 
     .desktop-premium-left {
-        filter: blur(8px);
-        transform: translateX(-46px) translateY(22px) rotate(-1.2deg);
+        filter: blur(4px);
+        transform: translateX(-32px) translateY(18px) rotate(-0.7deg);
     }
 
     .desktop-premium-right {
-        filter: blur(8px);
-        transform: translateX(46px) translateY(22px) rotate(1.2deg);
+        filter: blur(4px);
+        transform: translateX(32px) translateY(18px) rotate(0.7deg);
     }
 
     .desktop-premium-scale {
-        filter: blur(8px);
-        transform: translateY(32px) scale(0.9);
+        filter: blur(4px);
+        transform: translateY(24px) scale(0.94);
     }
 
     .desktop-premium-tilt {
-        filter: blur(7px);
-        transform: translateY(34px) rotate(-2deg) scale(0.96);
+        filter: blur(4px);
+        transform: translateY(24px) rotate(-1deg) scale(0.98);
     }
 
     .desktop-premium-rise {
-        filter: blur(7px);
-        transform: translateY(28px);
+        filter: blur(4px);
+        transform: translateY(22px);
     }
 
     .desktop-premium-focus {
-        filter: blur(12px);
-        transform: translateY(38px) scale(0.97);
+        filter: blur(5px);
+        transform: translateY(28px) scale(0.985);
     }
 
     .desktop-visible {

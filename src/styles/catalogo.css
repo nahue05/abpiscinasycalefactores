@@ -197,6 +197,7 @@
 }
 
 .catalog-brand-block {
+    scroll-margin-top: 104px;
     display: grid;
     gap: 18px;
 }
@@ -423,35 +424,35 @@
     .catalog-desktop-reveal {
         opacity: 0;
         transition:
-            opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-            filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+            filter 1.05s cubic-bezier(0.16, 1, 0.3, 1);
         will-change: opacity, transform, filter;
     }
 
     .catalog-desktop-title {
-        filter: blur(10px);
-        transform: translateY(30px) scale(0.97);
+        filter: blur(4px);
+        transform: translateY(20px) scale(0.99);
     }
 
     .catalog-desktop-links {
-        filter: blur(8px);
-        transform: translateY(24px);
+        filter: blur(3px);
+        transform: translateY(16px);
     }
 
     .catalog-desktop-brand {
-        filter: blur(9px);
-        transform: translateY(32px);
+        filter: blur(4px);
+        transform: translateY(22px);
     }
 
     .catalog-desktop-card-left {
-        filter: blur(8px);
-        transform: translateX(-38px) translateY(28px) scale(0.96) rotate(-0.8deg);
+        filter: blur(3px);
+        transform: translateX(-18px) translateY(18px) scale(0.985) rotate(-0.25deg);
     }
 
     .catalog-desktop-card-right {
-        filter: blur(8px);
-        transform: translateX(38px) translateY(28px) scale(0.96) rotate(0.8deg);
+        filter: blur(3px);
+        transform: translateX(18px) translateY(18px) scale(0.985) rotate(0.25deg);
     }
 
     .catalog-desktop-visible {
@@ -691,6 +692,7 @@
     }
 
     .catalog-brand-block {
+        scroll-margin-top: 86px;
         gap: 18px;
     }
 
