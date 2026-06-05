@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import "../styles/catalogo.css";
@@ -103,9 +103,42 @@ function Catalogo() {
     const categoria = searchParams.get("categoria");
     const whatsappNumber = "59892334060";
 
-    useEffect(() => {
-        obtenerProductos();
+    const obtenerProductos = useCallback(async () => {
+        setCargando(true);
+
+        let query = supabase
+            .from("productos")
+            .select("*")
+            .eq("activo", true)
+            .order("marca", { ascending: true })
+            .order("modelo", { ascending: true });
+
+        if (categoria) {
+            query = query.eq("categoria", categoria);
+        }
+
+        const { data, error } = await query;
+
+        if (error) {
+            console.log("Error al obtener productos:", error);
+            setProductos([]);
+            setCargando(false);
+            return;
+        }
+
+        setProductos(data || []);
+        setCargando(false);
     }, [categoria]);
+
+    useEffect(() => {
+        const timeoutId = window.setTimeout(() => {
+            obtenerProductos();
+        }, 0);
+
+        return () => {
+            window.clearTimeout(timeoutId);
+        };
+    }, [obtenerProductos]);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 760px)");
@@ -160,33 +193,6 @@ function Catalogo() {
             observador.disconnect();
         };
     }, [cargando, productos, categoria]);
-
-    async function obtenerProductos() {
-        setCargando(true);
-
-        let query = supabase
-            .from("productos")
-            .select("*")
-            .eq("activo", true)
-            .order("marca", { ascending: true })
-            .order("modelo", { ascending: true });
-
-        if (categoria) {
-            query = query.eq("categoria", categoria);
-        }
-
-        const { data, error } = await query;
-
-        if (error) {
-            console.log("Error al obtener productos:", error);
-            setProductos([]);
-            setCargando(false);
-            return;
-        }
-
-        setProductos(data || []);
-        setCargando(false);
-    }
 
     const gruposCatalogo = useMemo(() => {
         const grupos = {};

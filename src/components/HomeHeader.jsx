@@ -25,7 +25,7 @@ function HomeHeader() {
                         <a href="#productos" onClick={closeMenu}>Productos</a>
                         <a href="#trabajos" onClick={closeMenu}>Trabajos</a>
                         <a href="#contacto" onClick={closeMenu}>Contacto</a>
-                        <a href="/catalogo" onClick={closeMenu}>Catalogo</a>
+                        <a href="/catalogo" onClick={closeMenu}>Cat�logo</a>
                     </nav>
 
                     <div className="header-socials">
