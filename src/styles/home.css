@@ -108,6 +108,14 @@ html {
     box-shadow: 0 12px 28px rgba(17, 48, 71, 0.1);
 }
 
+.whatsapp-link:hover {
+    color: #25d366;
+}
+
+.instagram-link:hover {
+    color: #e1306c;
+}
+
 .social-link svg {
     font-size: 21px;
 }
@@ -269,13 +277,21 @@ html {
 }
 
 .section {
-    padding: 94px 7%;
+    padding: 68px 7%;
 }
 
 .section-title {
     max-width: 790px;
-    margin: 0 auto 52px;
+    margin: 0 auto 38px;
     text-align: center;
+}
+
+.services-section {
+    padding-bottom: 46px;
+}
+
+.products-section {
+    padding-top: 46px;
 }
 
 .section-title h2 {
