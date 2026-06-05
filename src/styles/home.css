@@ -869,7 +869,7 @@ html {
 		border: none;
 		padding: 0;
 		margin: 0;
-		background: rgba(17, 48, 71, 0.08);
+		background: transparent;
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity 0.24s ease;
