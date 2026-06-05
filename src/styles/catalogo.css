@@ -419,6 +419,57 @@
     gap: 12px;
 }
 
+@media (min-width: 761px) {
+    .catalog-desktop-reveal {
+        opacity: 0;
+        transition:
+            opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+            filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform, filter;
+    }
+
+    .catalog-desktop-title {
+        filter: blur(10px);
+        transform: translateY(30px) scale(0.97);
+    }
+
+    .catalog-desktop-links {
+        filter: blur(8px);
+        transform: translateY(24px);
+    }
+
+    .catalog-desktop-brand {
+        filter: blur(9px);
+        transform: translateY(32px);
+    }
+
+    .catalog-desktop-card-left {
+        filter: blur(8px);
+        transform: translateX(-38px) translateY(28px) scale(0.96) rotate(-0.8deg);
+    }
+
+    .catalog-desktop-card-right {
+        filter: blur(8px);
+        transform: translateX(38px) translateY(28px) scale(0.96) rotate(0.8deg);
+    }
+
+    .catalog-desktop-visible {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0) translateY(0) scale(1) rotate(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .catalog-desktop-reveal {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
+}
+
 @media (max-width: 1200px) {
     .catalog-nav {
         gap: 18px;

@@ -195,6 +195,56 @@ function Catalogo() {
         };
     }, [cargando, productos, categoria]);
 
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(min-width: 761px)");
+
+        if (!mediaQuery.matches || cargando) {
+            return;
+        }
+
+        const elementos = document.querySelectorAll(
+            ".catalog-title, .catalog-quick-links, .catalog-brand-title, .catalog-card"
+        );
+
+        const observador = new IntersectionObserver(
+            (entradas) => {
+                entradas.forEach((entrada) => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add("catalog-desktop-visible");
+                    } else {
+                        entrada.target.classList.remove("catalog-desktop-visible");
+                    }
+                });
+            },
+            {
+                threshold: 0.16,
+                rootMargin: "0px 0px -10% 0px"
+            }
+        );
+
+        elementos.forEach((elemento) => {
+            elemento.classList.add("catalog-desktop-reveal");
+
+            if (elemento.classList.contains("catalog-title")) {
+                elemento.classList.add("catalog-desktop-title");
+            } else if (elemento.classList.contains("catalog-quick-links")) {
+                elemento.classList.add("catalog-desktop-links");
+            } else if (elemento.classList.contains("catalog-brand-title")) {
+                elemento.classList.add("catalog-desktop-brand");
+            } else if (elemento.classList.contains("catalog-card")) {
+                const cards = Array.from(document.querySelectorAll(".catalog-card"));
+                const index = cards.indexOf(elemento);
+                elemento.classList.add(index % 2 === 0 ? "catalog-desktop-card-left" : "catalog-desktop-card-right");
+            }
+
+            observador.observe(elemento);
+        });
+
+        return () => {
+            observador.disconnect();
+        };
+    }, [cargando, productos, categoria]);
+
     const gruposCatalogo = useMemo(() => {
         const grupos = {};
 

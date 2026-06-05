@@ -4,7 +4,7 @@ import HomeHeader from "../components/HomeHeader.jsx";
 import Footer from "../components/Footer.jsx";
 
 function Home() {
-	    useEffect(() => {
+    useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 760px)");
 
         if (!mediaQuery.matches) {
@@ -31,41 +31,100 @@ function Home() {
             }
         );
 
-		elementos.forEach((elemento) => {
-			elemento.classList.add("mobile-reveal");
+        elementos.forEach((elemento) => {
+            elemento.classList.add("mobile-reveal");
 
-			if (elemento.classList.contains("hero-content")) {
-				elemento.classList.add("mobile-fade-up");
-			} else if (elemento.classList.contains("hero-card")) {
-				elemento.classList.add("mobile-zoom-soft");
-			} else if (elemento.classList.contains("section-title")) {
-				elemento.classList.add("mobile-fade-up");
-			} else if (elemento.classList.contains("service-card")) {
-				const cards = Array.from(document.querySelectorAll(".service-card"));
-				const index = cards.indexOf(elemento);
+            if (elemento.classList.contains("hero-content")) {
+                elemento.classList.add("mobile-fade-up");
+            } else if (elemento.classList.contains("hero-card")) {
+                elemento.classList.add("mobile-zoom-soft");
+            } else if (elemento.classList.contains("section-title")) {
+                elemento.classList.add("mobile-fade-up");
+            } else if (elemento.classList.contains("service-card")) {
+                const cards = Array.from(document.querySelectorAll(".service-card"));
+                const index = cards.indexOf(elemento);
 
-				if (index % 2 === 0) {
-					elemento.classList.add("mobile-slide-left");
-				} else {
-					elemento.classList.add("mobile-slide-right");
-				}
-			} else if (elemento.classList.contains("product-card")) {
-				elemento.classList.add("mobile-zoom-soft");
-			} else if (elemento.matches(".work-grid div")) {
-				elemento.classList.add("mobile-wave-in");
-			} else if (elemento.matches(".faq-list article")) {
-				elemento.classList.add("mobile-fade-up");
-			} else if (elemento.classList.contains("contact")) {
-				elemento.classList.add("mobile-blur-in");
-			}
+                if (index % 2 === 0) {
+                    elemento.classList.add("mobile-slide-left");
+                } else {
+                    elemento.classList.add("mobile-slide-right");
+                }
+            } else if (elemento.classList.contains("product-card")) {
+                elemento.classList.add("mobile-zoom-soft");
+            } else if (elemento.matches(".work-grid div")) {
+                elemento.classList.add("mobile-wave-in");
+            } else if (elemento.matches(".faq-list article")) {
+                elemento.classList.add("mobile-fade-up");
+            } else if (elemento.classList.contains("contact")) {
+                elemento.classList.add("mobile-blur-in");
+            }
 
-			observador.observe(elemento);
-		});
+            observador.observe(elemento);
+        });
 
         return () => {
             observador.disconnect();
         };
     }, []);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(min-width: 761px)");
+
+        if (!mediaQuery.matches) {
+            return;
+        }
+
+        const elementos = document.querySelectorAll(
+            ".hero-content, .hero-card, .section-title, .service-card, .product-card, .work-grid div, .faq-list article, .contact"
+        );
+
+        const observador = new IntersectionObserver(
+            (entradas) => {
+                entradas.forEach((entrada) => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add("desktop-visible");
+                    } else {
+                        entrada.target.classList.remove("desktop-visible");
+                    }
+                });
+            },
+            {
+                threshold: 0.18,
+                rootMargin: "0px 0px -12% 0px"
+            }
+        );
+
+        elementos.forEach((elemento) => {
+            elemento.classList.add("desktop-reveal");
+
+            if (elemento.classList.contains("hero-content")) {
+                elemento.classList.add("desktop-premium-copy");
+            } else if (elemento.classList.contains("hero-card")) {
+                elemento.classList.add("desktop-premium-card");
+            } else if (elemento.classList.contains("section-title")) {
+                elemento.classList.add("desktop-premium-title");
+            } else if (elemento.classList.contains("service-card")) {
+                const cards = Array.from(document.querySelectorAll(".service-card"));
+                const index = cards.indexOf(elemento);
+                elemento.classList.add(index % 2 === 0 ? "desktop-premium-left" : "desktop-premium-right");
+            } else if (elemento.classList.contains("product-card")) {
+                elemento.classList.add("desktop-premium-scale");
+            } else if (elemento.matches(".work-grid div")) {
+                elemento.classList.add("desktop-premium-tilt");
+            } else if (elemento.matches(".faq-list article")) {
+                elemento.classList.add("desktop-premium-rise");
+            } else if (elemento.classList.contains("contact")) {
+                elemento.classList.add("desktop-premium-focus");
+            }
+
+            observador.observe(elemento);
+        });
+
+        return () => {
+            observador.disconnect();
+        };
+    }, []);
+
     const whatsappNumber = "59892334060";
     const whatsappMessage = "Hola, me gustaría obtener información sobre...";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
