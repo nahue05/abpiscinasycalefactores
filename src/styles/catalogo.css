@@ -990,6 +990,7 @@
 
     .catalog-header {
         height: 58px;
+		z-index: 1000;
     }
 
     .catalog-logo img {
