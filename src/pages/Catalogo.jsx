@@ -393,9 +393,35 @@ function Catalogo() {
                                                                                     <span className="catalog-info-text">Más info</span>
                                                                                 </button>
 
-                                                                                <div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
-                                                                                    <p>{producto.descripcion_breve}</p>
-                                                                                </div>
+																				<div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
+																					<p>{producto.descripcion_breve}</p>
+
+																					<div className="catalog-mobile-detail-blocks">
+																						{producto.metros_cuadrados && (
+																							<div className="catalog-mobile-detail-block">
+																								<span>Calefacciona</span>
+																								<strong>{producto.metros_cuadrados}</strong>
+																							</div>
+																						)}
+
+																						{producto.dimensiones && (
+																							<div className="catalog-mobile-detail-block">
+																								<span>Dimensiones</span>
+																								<strong>{producto.dimensiones}</strong>
+																							</div>
+																						)}
+																					</div>
+
+																					<a
+																						className="catalog-mobile-detail-whatsapp"
+																						href={whatsappLink}
+																						target="_blank"
+																						rel="noreferrer"
+																					>
+																						<FaWhatsapp />
+																						Consultar
+																					</a>
+																				</div>
                                                                             </>
                                                                         )}
                                                                     </div>
