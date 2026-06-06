@@ -179,13 +179,7 @@ function Catalogo() {
             } else if (elemento.classList.contains("catalog-card")) {
                 const cards = Array.from(document.querySelectorAll(".catalog-card"));
                 const index = cards.indexOf(elemento);
-                elemento.classList.add(`catalog-mobile-step-${index % 4}`);
-
-                if (index % 2 === 0) {
-                    elemento.classList.add("catalog-mobile-slide-left");
-                } else {
-                    elemento.classList.add("catalog-mobile-slide-right");
-                }
+                elemento.classList.add("catalog-mobile-card-up", `catalog-mobile-step-${index % 6}`);
             }
 
             observador.observe(elemento);

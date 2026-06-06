@@ -700,7 +700,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 8px 10px 10px;
+		padding: 6px 10px 10px;
 	}
 
 	.catalog-category,
@@ -711,7 +711,7 @@
 
 	.catalog-content h3 {
 		min-height: 27px;
-		margin-bottom: 4px;
+		margin-bottom: 6px;
 		font-size: 14px;
 		line-height: 1.12;
 		letter-spacing: -0.3px;
@@ -730,20 +730,20 @@
 
     .catalog-whatsapp {
         width: auto;
-        min-height: 25px;
-        padding: 5px 10px;
-        gap: 5px;
-        border: 1px solid rgba(230, 79, 157, 0.32);
-        background: rgba(230, 79, 157, 0.13);
-        color: var(--primary-dark);
-        font-size: 10px;
+        min-height: 27px;
+        padding: 6px 11px;
+        gap: 6px;
+        border: 1px solid rgba(37, 211, 102, 0.34);
+        background: rgba(37, 211, 102, 0.14);
+        color: #0d7f49;
+        font-size: 10.5px;
         line-height: 1;
-        box-shadow: none;
+        box-shadow: 0 8px 16px rgba(37, 211, 102, 0.12);
     }
 
     .catalog-whatsapp svg {
-        color: var(--primary);
-        font-size: 12px;
+        color: #20b85a;
+        font-size: 13px;
     }
 
     .catalog-footer-links {
@@ -901,15 +901,23 @@
     }
 
     .catalog-mobile-step-1 {
-        transition-delay: 0.08s;
+        transition-delay: 0.14s;
     }
 
     .catalog-mobile-step-2 {
-        transition-delay: 0.16s;
+        transition-delay: 0.28s;
     }
 
     .catalog-mobile-step-3 {
-        transition-delay: 0.24s;
+        transition-delay: 0.42s;
+    }
+
+    .catalog-mobile-step-4 {
+        transition-delay: 0.56s;
+    }
+
+    .catalog-mobile-step-5 {
+        transition-delay: 0.7s;
     }
 
     .catalog-mobile-fade-up {
@@ -922,6 +930,10 @@
 
     .catalog-mobile-slide-right {
         transform: translateX(22px);
+    }
+
+    .catalog-mobile-card-up {
+        transform: translateY(34px);
     }
 
     .catalog-mobile-blur-in {
@@ -951,7 +963,7 @@
     }
 
     .catalog-image {
-        height: 196px;
+        height: 204px;
     }
 
     .catalog-image img {
@@ -959,7 +971,7 @@
     }
 
     .catalog-content {
-        padding: 8px 9px 10px;
+        padding: 6px 9px 10px;
     }
 
     .catalog-category,
@@ -970,7 +982,7 @@
 
     .catalog-content h3 {
         min-height: 27px;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
         font-size: 13.5px;
         line-height: 1.12;
     }
@@ -1043,7 +1055,7 @@
     }
 
     .catalog-image {
-        height: 188px;
+        height: 196px;
     }
 
     .catalog-mobile-info-button {
