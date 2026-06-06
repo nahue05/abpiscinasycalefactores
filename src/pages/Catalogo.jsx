@@ -155,8 +155,17 @@ function Catalogo() {
             (entradas) => {
                 entradas.forEach((entrada) => {
                     if (entrada.isIntersecting) {
-                        entrada.target.classList.add("catalog-mobile-visible");
+                        if (entrada.target.classList.contains("catalog-card")) {
+                            window.clearTimeout(Number(entrada.target.dataset.mobileTimer || 0));
+
+                            entrada.target.dataset.mobileTimer = window.setTimeout(() => {
+                                entrada.target.classList.add("catalog-mobile-visible");
+                            }, Number(entrada.target.dataset.mobileDelay || 0));
+                        } else {
+                            entrada.target.classList.add("catalog-mobile-visible");
+                        }
                     } else {
+                        window.clearTimeout(Number(entrada.target.dataset.mobileTimer || 0));
                         entrada.target.classList.remove("catalog-mobile-visible");
                     }
                 });
@@ -179,6 +188,7 @@ function Catalogo() {
             } else if (elemento.classList.contains("catalog-card")) {
                 const cards = Array.from(document.querySelectorAll(".catalog-card"));
                 const index = cards.indexOf(elemento);
+                elemento.dataset.mobileDelay = String((index % 6) * 140);
                 elemento.classList.add("catalog-mobile-card-up", `catalog-mobile-step-${index % 6}`);
             }
 

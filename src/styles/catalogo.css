@@ -1084,6 +1084,46 @@
     }
 }
 
+@media (max-width: 760px) {
+    .catalog-card.catalog-mobile-reveal {
+        opacity: 0;
+        transform: translateY(38px);
+    }
+
+    .catalog-card.catalog-mobile-visible {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+
+    .catalog-content {
+        padding-top: 4px;
+        padding-bottom: 10px;
+    }
+
+    .catalog-content h3 {
+        margin-bottom: 4px;
+    }
+
+    .catalog-whatsapp {
+        width: auto;
+        min-height: 27px;
+        padding: 6px 11px;
+        gap: 6px;
+        border: 1px solid rgba(37, 211, 102, 0.34);
+        background: rgba(37, 211, 102, 0.14);
+        color: #0d7f49;
+        font-size: 10.5px;
+        line-height: 1;
+        box-shadow: 0 8px 16px rgba(37, 211, 102, 0.12);
+    }
+
+    .catalog-whatsapp svg {
+        color: #20b85a;
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 860px) and (orientation: landscape) {
     .catalog-shell {
         padding-top: 58px;
