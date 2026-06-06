@@ -396,31 +396,46 @@ function Catalogo() {
 																				<div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
 																					<p>{producto.descripcion_breve}</p>
 
-																					<div className="catalog-mobile-detail-blocks">
-																						{producto.metros_cuadrados && (
-																							<div className="catalog-mobile-detail-block">
-																								<span>Calefacciona</span>
-																								<strong>{producto.metros_cuadrados}</strong>
-																							</div>
-																						)}
+																				<div className="catalog-mobile-detail-blocks">
+																					{producto.tipo_combustion && (
+																						<div className="catalog-mobile-detail-block">
+																							<span>Combustión</span>
+																							<strong>{producto.tipo_combustion}</strong>
+																						</div>
+																					)}
 
-																						{producto.dimensiones && (
-																							<div className="catalog-mobile-detail-block">
-																								<span>Dimensiones</span>
-																								<strong>{producto.dimensiones}</strong>
-																							</div>
-																						)}
-																					</div>
+																					{producto.consumo && (
+																						<div className="catalog-mobile-detail-block">
+																							<span>Consumo</span>
+																							<strong>{producto.consumo}</strong>
+																						</div>
+																					)}
 
-																					<a
-																						className="catalog-mobile-detail-whatsapp"
-																						href={whatsappLink}
-																						target="_blank"
-																						rel="noreferrer"
-																					>
-																						<FaWhatsapp />
-																						Consultar
-																					</a>
+																					{producto.metros_cuadrados && (
+																						<div className="catalog-mobile-detail-block">
+																							<span>Calefacciona</span>
+																							<strong>{producto.metros_cuadrados}</strong>
+																						</div>
+																					)}
+
+																					{producto.dimensiones && (
+																						<div className="catalog-mobile-detail-block">
+																							<span>Dimensiones</span>
+																							<strong>{producto.dimensiones}</strong>
+																						</div>
+																					)}
+																				</div>
+
+																					
+																				<a
+																					className="catalog-mobile-detail-whatsapp"
+																					href={whatsappLink}
+																					target="_blank"
+																					rel="noreferrer"
+																				>
+																					<FaWhatsapp />
+																					Consultar
+																				</a>
 																				</div>
                                                                             </>
                                                                         )}
