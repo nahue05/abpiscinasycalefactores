@@ -923,6 +923,37 @@
         height: 64px;
     }
 
+    .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .catalog-image {
+        height: 170px;
+    }
+
+    .catalog-image img {
+        padding: 12px;
+    }
+
+    .catalog-content {
+        padding: 9px 9px 11px;
+    }
+
+    .catalog-category,
+    .catalog-info,
+    .catalog-price,
+    .catalog-whatsapp {
+        display: none;
+    }
+
+    .catalog-content h3 {
+        min-height: 31px;
+        margin-bottom: 0;
+        font-size: 13.5px;
+        line-height: 1.12;
+    }
+
     .catalog-logo img {
         height: 50px;
     }
@@ -959,27 +990,6 @@
         font-size: 30px;
     }
 
-	.catalog-grid {
-		gap: 10px;
-	}
-
-	.catalog-image {
-		height: 132px;
-	}
-
-	.catalog-image img {
-		padding: 12px;
-	}
-
-	.catalog-content {
-		padding: 9px 9px 11px;
-	}
-
-	.catalog-content h3 {
-		font-size: 13.5px;
-		min-height: 31px;
-	}
-
     .catalog-category-block {
         scroll-margin-top: 82px;
     }
@@ -1007,38 +1017,38 @@
         font-size: 28px;
     }
 
-	.catalog-content h3 {
-		font-size: 13px;
-	}
+    .catalog-content h3 {
+        font-size: 13px;
+    }
 
-	.catalog-image {
-		height: 124px;
-	}
+    .catalog-image {
+        height: 162px;
+    }
 
-	.catalog-mobile-info-button {
-		top: 9px;
-		right: 9px;
-		width: 74px;
-		height: 31px;
-	}
+    .catalog-mobile-info-button {
+        top: 9px;
+        right: 9px;
+        width: 74px;
+        height: 31px;
+    }
 
-	.catalog-mobile-info-button-open {
-		width: 31px;
-	}
+    .catalog-mobile-info-button-open {
+        width: 31px;
+    }
 
-	.catalog-mobile-info-button::before {
-		width: 31px;
-		height: 31px;
-		font-size: 22px;
-	}
+    .catalog-mobile-info-button::before {
+        width: 31px;
+        height: 31px;
+        font-size: 22px;
+    }
 
-	.catalog-info-text {
-		font-size: 11px;
-	}
+    .catalog-info-text {
+        font-size: 11px;
+    }
 
-	.catalog-description-hover {
-		padding: 47px 10px 10px;
-	}
+    .catalog-description-hover {
+        padding: 47px 10px 10px;
+    }
 }
 
 @media (max-width: 860px) and (orientation: landscape) {
