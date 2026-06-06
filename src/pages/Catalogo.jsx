@@ -304,7 +304,7 @@ function Catalogo() {
                     </h1>
 
                     {!cargando && enlacesCatalogo.length > 0 && (
-                        <nav className="catalog-quick-links" aria-label="Secciones del catálogo">
+                        <nav className="catalog-quick-links" aria-label="Secciones del catalogo">
                             {enlacesCatalogo.map((enlace, index) => (
                                 <span className="catalog-quick-link-item" key={enlace.id}>
                                     <a
@@ -333,7 +333,7 @@ function Catalogo() {
                     )}
 
                     {!cargando && productos.length === 0 && (
-                        <p className="catalog-status">No hay productos cargados en esta categoría.</p>
+                        <p className="catalog-status">No hay productos cargados en esta categoria.</p>
                     )}
 
                     {!cargando && productos.length > 0 && (
@@ -362,10 +362,15 @@ function Catalogo() {
 
                                                     <div className="catalog-grid">
                                                         {productosGrupo.map((producto) => {
-                                                            const mensaje = `Hola, vi esta ${producto.marca} ${producto.modelo} en su catálogo y quería más información.`;
+                                                            const mensaje = `Hola, vi esta ${producto.marca} ${producto.modelo} en su catalogo y queria mas informacion.`;
                                                             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
                                                             const descripcionEstaAbierta = descripcionAbierta === producto.id;
                                                             const categoriaProductoCard = limpiarTexto(producto.categoria);
+                                                            const combustion = limpiarTexto(producto.combustion || producto.tipo_combustion);
+                                                            const tieneDetallesMobile = combustion
+                                                                || producto.consumo
+                                                                || producto.metros_cuadrados
+                                                                || producto.dimensiones;
 
                                                             return (
                                                                 <article className="catalog-card" key={producto.id}>
@@ -374,11 +379,11 @@ function Catalogo() {
                                                                             <img src={producto.imagen_url} alt={`${producto.marca} ${producto.modelo}`} />
                                                                         ) : (
                                                                             <div className="catalog-no-image">
-                                                                                <img src="/logo.png" alt="Logo Andrés Berrutti" />
+                                                                                <img src="/logo.png" alt="Logo Andres Berrutti" />
                                                                             </div>
                                                                         )}
 
-                                                                        {producto.descripcion_breve && (
+                                                                        {tieneDetallesMobile && (
                                                                             <>
                                                                                 <button
                                                                                     type="button"
@@ -386,57 +391,44 @@ function Catalogo() {
                                                                                     onClick={() => toggleDescripcion(producto.id)}
                                                                                     aria-label={
                                                                                         descripcionEstaAbierta
-                                                                                            ? `Cerrar descripción de ${producto.marca} ${producto.modelo}`
-                                                                                            : `Ver descripción de ${producto.marca} ${producto.modelo}`
+                                                                                            ? `Cerrar informacion de ${producto.marca} ${producto.modelo}`
+                                                                                            : `Ver informacion de ${producto.marca} ${producto.modelo}`
                                                                                     }
                                                                                 >
-                                                                                    <span className="catalog-info-text">Más info</span>
+                                                                                    <span className="catalog-info-text">Info</span>
                                                                                 </button>
 
-																				<div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
-																					<p>{producto.descripcion_breve}</p>
+                                                                                <div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
+                                                                                    <div className="catalog-mobile-detail-blocks">
+                                                                                        {combustion && (
+                                                                                            <div className="catalog-mobile-detail-block">
+                                                                                                <span>Combustion</span>
+                                                                                                <strong>{combustion}</strong>
+                                                                                            </div>
+                                                                                        )}
 
-																				<div className="catalog-mobile-detail-blocks">
-																					{producto.tipo_combustion && (
-																						<div className="catalog-mobile-detail-block">
-																							<span>Combustión</span>
-																							<strong>{producto.tipo_combustion}</strong>
-																						</div>
-																					)}
+                                                                                        {producto.consumo && (
+                                                                                            <div className="catalog-mobile-detail-block">
+                                                                                                <span>Consumo</span>
+                                                                                                <strong>{producto.consumo}</strong>
+                                                                                            </div>
+                                                                                        )}
 
-																					{producto.consumo && (
-																						<div className="catalog-mobile-detail-block">
-																							<span>Consumo</span>
-																							<strong>{producto.consumo}</strong>
-																						</div>
-																					)}
+                                                                                        {producto.metros_cuadrados && (
+                                                                                            <div className="catalog-mobile-detail-block">
+                                                                                                <span>Calefacciona</span>
+                                                                                                <strong>{producto.metros_cuadrados}</strong>
+                                                                                            </div>
+                                                                                        )}
 
-																					{producto.metros_cuadrados && (
-																						<div className="catalog-mobile-detail-block">
-																							<span>Calefacciona</span>
-																							<strong>{producto.metros_cuadrados}</strong>
-																						</div>
-																					)}
-
-																					{producto.dimensiones && (
-																						<div className="catalog-mobile-detail-block">
-																							<span>Dimensiones</span>
-																							<strong>{producto.dimensiones}</strong>
-																						</div>
-																					)}
-																				</div>
-
-																					
-																				<a
-																					className="catalog-mobile-detail-whatsapp"
-																					href={whatsappLink}
-																					target="_blank"
-																					rel="noreferrer"
-																				>
-																					<FaWhatsapp />
-																					Consultar
-																				</a>
-																				</div>
+                                                                                        {producto.dimensiones && (
+                                                                                            <div className="catalog-mobile-detail-block">
+                                                                                                <span>Dimensiones</span>
+                                                                                                <strong>{producto.dimensiones}</strong>
+                                                                                            </div>
+                                                                                        )}
+                                                                                    </div>
+                                                                                </div>
                                                                             </>
                                                                         )}
                                                                     </div>
