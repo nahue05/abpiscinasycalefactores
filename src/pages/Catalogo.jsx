@@ -155,17 +155,8 @@ function Catalogo() {
             (entradas) => {
                 entradas.forEach((entrada) => {
                     if (entrada.isIntersecting) {
-                        if (entrada.target.classList.contains("catalog-card")) {
-                            window.clearTimeout(Number(entrada.target.dataset.mobileTimer || 0));
-
-                            entrada.target.dataset.mobileTimer = window.setTimeout(() => {
-                                entrada.target.classList.add("catalog-mobile-visible");
-                            }, Number(entrada.target.dataset.mobileDelay || 0));
-                        } else {
-                            entrada.target.classList.add("catalog-mobile-visible");
-                        }
+                        entrada.target.classList.add("catalog-mobile-visible");
                     } else {
-                        window.clearTimeout(Number(entrada.target.dataset.mobileTimer || 0));
                         entrada.target.classList.remove("catalog-mobile-visible");
                     }
                 });
@@ -186,10 +177,7 @@ function Catalogo() {
             } else if (elemento.classList.contains("catalog-brand-title")) {
                 elemento.classList.add("catalog-mobile-blur-in");
             } else if (elemento.classList.contains("catalog-card")) {
-                const cards = Array.from(document.querySelectorAll(".catalog-card"));
-                const index = cards.indexOf(elemento);
-                elemento.dataset.mobileDelay = String((index % 6) * 140);
-                elemento.classList.add("catalog-mobile-card-up", `catalog-mobile-step-${index % 6}`);
+                elemento.classList.add("catalog-mobile-card-up");
             }
 
             observador.observe(elemento);
@@ -372,10 +360,13 @@ function Catalogo() {
                                                             const descripcionEstaAbierta = descripcionAbierta === producto.id;
                                                             const categoriaProductoCard = limpiarTexto(producto.categoria);
                                                             const combustion = limpiarTexto(producto.combustion || producto.tipo_combustion);
-                                                            const tieneDetallesMobile = combustion
-                                                                || producto.consumo
-                                                                || producto.metros_cuadrados
-                                                                || producto.dimensiones;
+                                                            const detallesProducto = [
+                                                                { etiqueta: "Combustion", valor: combustion },
+                                                                { etiqueta: "Calefacciona", valor: producto.metros_cuadrados },
+                                                                { etiqueta: "Dimensiones", valor: producto.dimensiones },
+                                                                { etiqueta: "Consumo", valor: producto.consumo }
+                                                            ].filter((detalle) => limpiarTexto(detalle.valor));
+                                                            const tieneDetallesMobile = detallesProducto.length > 0;
 
                                                             return (
                                                                 <article className="catalog-card" key={producto.id}>
@@ -405,33 +396,15 @@ function Catalogo() {
 
                                                                                 <div className={`catalog-description-hover ${descripcionEstaAbierta ? "catalog-description-open" : ""}`}>
                                                                                     <div className="catalog-mobile-detail-blocks">
-                                                                                        {combustion && (
-                                                                                            <div className="catalog-mobile-detail-block">
-                                                                                                <span>Combustion</span>
-                                                                                                <strong>{combustion}</strong>
+                                                                                        {detallesProducto.map((detalle, index) => (
+                                                                                            <div
+                                                                                                className={`catalog-mobile-detail-block catalog-mobile-detail-block-${index}`}
+                                                                                                key={`${producto.id}-${detalle.etiqueta}`}
+                                                                                            >
+                                                                                                <span>{detalle.etiqueta}</span>
+                                                                                                <strong>{detalle.valor}</strong>
                                                                                             </div>
-                                                                                        )}
-
-                                                                                        {producto.consumo && (
-                                                                                            <div className="catalog-mobile-detail-block">
-                                                                                                <span>Consumo</span>
-                                                                                                <strong>{producto.consumo}</strong>
-                                                                                            </div>
-                                                                                        )}
-
-                                                                                        {producto.metros_cuadrados && (
-                                                                                            <div className="catalog-mobile-detail-block">
-                                                                                                <span>Calefacciona</span>
-                                                                                                <strong>{producto.metros_cuadrados}</strong>
-                                                                                            </div>
-                                                                                        )}
-
-                                                                                        {producto.dimensiones && (
-                                                                                            <div className="catalog-mobile-detail-block">
-                                                                                                <span>Dimensiones</span>
-                                                                                                <strong>{producto.dimensiones}</strong>
-                                                                                            </div>
-                                                                                        )}
+                                                                                        ))}
                                                                                     </div>
                                                                                 </div>
                                                                             </>

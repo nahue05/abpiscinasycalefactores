@@ -303,7 +303,7 @@
     opacity: 0;
     pointer-events: none;
     transform: translateX(-100%);
-    transition: opacity 0.24s ease, transform 0.24s ease;
+    transition: opacity 0.28s ease, transform 0.28s ease;
     backdrop-filter: blur(3px);
 }
 
@@ -330,6 +330,32 @@
     padding: 10px 12px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.14);
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.42s ease,
+        transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-description-open .catalog-mobile-detail-block {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.catalog-description-open .catalog-mobile-detail-block-0 {
+    transition-delay: 0.04s;
+}
+
+.catalog-description-open .catalog-mobile-detail-block-1 {
+    transition-delay: 0.25s;
+}
+
+.catalog-description-open .catalog-mobile-detail-block-2 {
+    transition-delay: 0.46s;
+}
+
+.catalog-description-open .catalog-mobile-detail-block-3 {
+    transition-delay: 0.67s;
 }
 
 .catalog-mobile-detail-block span {
@@ -900,36 +926,8 @@
         will-change: opacity, transform, filter;
     }
 
-    .catalog-mobile-step-1 {
-        transition-delay: 0.14s;
-    }
-
-    .catalog-mobile-step-2 {
-        transition-delay: 0.28s;
-    }
-
-    .catalog-mobile-step-3 {
-        transition-delay: 0.42s;
-    }
-
-    .catalog-mobile-step-4 {
-        transition-delay: 0.56s;
-    }
-
-    .catalog-mobile-step-5 {
-        transition-delay: 0.7s;
-    }
-
     .catalog-mobile-fade-up {
         transform: translateY(24px);
-    }
-
-    .catalog-mobile-slide-left {
-        transform: translateX(-22px);
-    }
-
-    .catalog-mobile-slide-right {
-        transform: translateX(22px);
     }
 
     .catalog-mobile-card-up {
@@ -966,25 +964,8 @@
         height: 204px;
     }
 
-    .catalog-image img {
-        padding: 12px;
-    }
-
-    .catalog-content {
-        padding: 6px 9px 10px;
-    }
-
-    .catalog-category,
-    .catalog-info,
-    .catalog-price {
-        display: none;
-    }
-
     .catalog-content h3 {
-        min-height: 27px;
-        margin-bottom: 6px;
         font-size: 13.5px;
-        line-height: 1.12;
     }
 
     .catalog-logo img {
@@ -1096,13 +1077,20 @@
         transform: translateY(0);
     }
 
+    .catalog-image img {
+        object-position: center bottom;
+        padding: 10px 12px 4px;
+    }
+
     .catalog-content {
         padding-top: 4px;
         padding-bottom: 10px;
     }
 
     .catalog-content h3 {
+        min-height: 0;
         margin-bottom: 4px;
+        line-height: 1.1;
     }
 
     .catalog-whatsapp {
